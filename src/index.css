@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------- Fonts --------------------------------- */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/inter-var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/sora-var.woff2') format('woff2');
+}
+
+/* ------------------------------- Design tokens ----------------------------
+   The dark theme reproduces the original Webflow site exactly.
+   The light theme is derived from the same token set. */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 4%;
+    --card: 0 0% 97%;
+    --card-foreground: 0 0% 4%;
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 38%;
+    --border: 0 0% 0% / 0.1;
+    --border-strong: 0 0% 0% / 0.18;
+    --nav-gradient: linear-gradient(
+      rgba(255, 255, 255, 0.5) 34%,
+      rgba(255, 255, 255, 0)
+    );
+    --glow: 0 0% 0%;
+    --footer-bg-image: none;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 4.3%; /* #0B0B0B */
+    --card-foreground: 0 0% 100%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 60%; /* #999 */
+    --border: 0 0% 100% / 0.08;
+    --border-strong: 0 0% 100% / 0.16;
+    --nav-gradient: linear-gradient(rgba(0, 0, 0, 0.5) 34%, rgba(0, 0, 0, 0));
+    --glow: 0 0% 100%;
+    --footer-bg-image: url('/images/footer-bg.avif');
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+}
+
+@layer components {
+  /* Primary gradient pill button (.banner-cta / .primary-button) */
+  .btn-pill {
+    @apply inline-flex items-center justify-center gap-2 rounded-pill px-6 py-4 font-heading font-semibold text-white shadow-btn-pill transition-transform duration-200;
+    background:
+      linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+      linear-gradient(315deg, #39d47a 0%, #009cd0 100%);
+  }
+  .btn-pill:hover {
+    transform: scale(1.02);
+  }
+
+  /* Outline gradient pill (.get-with-ai-btn / .gradient-shadow) */
+  .btn-pill-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-pill bg-black/20 px-6 py-4 font-heading font-semibold text-foreground shadow-btn-outline transition-transform duration-200;
+  }
+  .btn-pill-outline:hover {
+    transform: scale(1.02);
+  }
+
+  .brand-gradient-text {
+    background-image: linear-gradient(270deg, #39d47a 3.98%, #009cd0 96.02%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .old-price {
+    @apply text-muted-foreground line-through;
+  }
+
+  /* Stats / testimonial card with radial glows (.trust-block) */
+  .trust-block {
+    @apply relative overflow-hidden rounded-3xl border bg-card;
+    border-color: hsl(var(--border));
+  }
+  .trust-block::before {
+    content: '';
+    @apply pointer-events-none absolute inset-0;
+    background:
+      radial-gradient(
+        60% 40% at 50% 110%,
+        hsl(var(--glow) / 0.09),
+        transparent 70%
+      ),
+      radial-gradient(
+        30% 30% at 0% 50%,
+        hsl(var(--glow) / 0.05),
+        transparent 70%
+      ),
+      radial-gradient(
+        30% 30% at 100% 50%,
+        hsl(var(--glow) / 0.05),
+        transparent 70%
+      );
+  }
+}
+
+@layer utilities {
+  .border-token {
+    border-color: hsl(var(--border));
+  }
+  .border-token-strong {
+    border-color: hsl(var(--border-strong));
+  }
+  /* Below-the-fold rendering hint */
+  .cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 800px;
+  }
+}
+
+/* Marquee fade edges (.marquee-wrapper:before/:after) */
+.marquee-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.marquee-wrapper::before,
+.marquee-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+.marquee-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, hsl(var(--background)), transparent);
+}
+.marquee-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, hsl(var(--background)), transparent);
+}
+
+/* Feature carousel progress bar */
+@keyframes progress-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-reverse {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

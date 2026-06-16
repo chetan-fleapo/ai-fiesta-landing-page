@@ -1,0 +1,38 @@
+version: 2
+
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      time: '04:30'
+      timezone: 'Asia/Kolkata'
+    versioning-strategy: 'increase'
+    ignore:
+      - dependency-name: 'vite'
+      - dependency-name: '@vitejs/*'
+    groups:
+      radix-ui:
+        patterns:
+          - '@radix-ui/*'
+      react-router:
+        patterns:
+          - 'react-router'
+          - '@react-router/*'
+      eslint:
+        patterns:
+          - 'eslint'
+          - 'eslint-*'
+          - '@eslint/js'
+          - 'typescript-eslint'
+          - 'prettier'
+          - 'prettier-*'
+      commitlint:
+        patterns:
+          - '@commitlint/*'
+          - 'lint-staged'
+      i18n:
+        patterns:
+          - 'i18next'
+          - 'react-i18next'
+          - 'i18next-*'
