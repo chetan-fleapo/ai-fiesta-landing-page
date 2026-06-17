@@ -41,12 +41,6 @@ export const CALCULATOR_MODELS: CalculatorModel[] = [
     icon: '/images/models/qwen.png'
   },
   {
-    id: 'meta',
-    name: 'Meta (Llama)',
-    yearlyPrice: 0,
-    icon: '/images/models/meta.png'
-  },
-  {
     id: 'grok',
     name: 'Grok',
     yearlyPrice: 30000,

@@ -1,4 +1,3 @@
-import { ThemeToggle } from '@/components/layout/ThemeToggle';
 import { ArrowRight } from '@/components/shared/ArrowRight';
 import { LINKS } from '@/constants/links';
 import { cn } from '@/lib/utils';
@@ -71,7 +70,7 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
           <a
             href={LINKS.app}
             className="login-btn hidden items-center gap-2 rounded-pill border bg-card px-6 py-3 font-heading text-[15px] font-semibold text-foreground transition-colors hover:bg-muted md:inline-flex"

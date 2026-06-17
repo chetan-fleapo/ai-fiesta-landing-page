@@ -83,7 +83,7 @@ export function FeaturesCarousel() {
                     loading={index === 0 ? 'eager' : 'lazy'}
                     decoding="async"
                     className={cn(
-                      'absolute inset-0 h-full w-full rounded-t-2xl border-b-0 border-[rgba(255,255,255,0.30)] object-cover object-top transition-opacity [transition-duration:450ms] md:border',
+                      'absolute inset-0 h-full w-full rounded-t-2xl !border-b-0 border-[rgba(255,255,255,0.30)] object-cover object-top transition-opacity [transition-duration:450ms] md:border',
                       active === index ? 'opacity-100' : 'opacity-0'
                     )}
                   />

@@ -2,9 +2,8 @@ const LLMS = [
   { name: 'ChatGPT', src: '/images/models/chatgpt.png' },
   { name: 'Claude', src: '/images/models/claude.png' },
   { name: 'Gemini', src: '/images/models/gemini.png' },
-  { name: 'Meta', src: '/images/models/meta.png' },
   { name: 'Perplexity', src: '/images/models/perplexity.png' },
-  { name: 'DeepSeek', src: '/images/models/deepseek.png' },
+  { name: 'DeepSeek', src: '/images/models/deepseek.png' }
 ];
 
 const ORBIT_DURATION = 28; // seconds
@@ -45,7 +44,7 @@ export function LlmsOrbit() {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              'radial-gradient(ellipse 70% 50% at 50% 58%, rgba(0,180,120,0.18) 0%, transparent 75%)',
+              'radial-gradient(ellipse 70% 50% at 50% 58%, rgba(0,180,120,0.18) 0%, transparent 75%)'
           }}
         />
 
@@ -58,7 +57,7 @@ export function LlmsOrbit() {
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            border: '1px solid rgba(0,200,150,0.10)',
+            border: '1px solid rgba(0,200,150,0.10)'
           }}
         />
 
@@ -71,7 +70,7 @@ export function LlmsOrbit() {
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            border: '1px solid rgba(0,200,150,0.22)',
+            border: '1px solid rgba(0,200,150,0.22)'
           }}
         />
 
@@ -87,7 +86,7 @@ export function LlmsOrbit() {
             background:
               'radial-gradient(ellipse, rgba(0,180,120,0.45) 0%, transparent 75%)',
             filter: 'blur(6px)',
-            animation: 'disc-glow 3s ease-in-out infinite',
+            animation: 'disc-glow 3s ease-in-out infinite'
           }}
         />
 
@@ -104,7 +103,7 @@ export function LlmsOrbit() {
                 width: 0,
                 height: 0,
                 animation: `llm-carrier ${ORBIT_DURATION}s linear infinite`,
-                animationDelay: `${delay}s`,
+                animationDelay: `${delay}s`
               }}
             >
               <div
@@ -114,7 +113,7 @@ export function LlmsOrbit() {
                   height: ICON_SIZE,
                   top: -ICON_SIZE / 2,
                   animation: `llm-icon ${ORBIT_DURATION}s linear infinite`,
-                  animationDelay: `${delay}s`,
+                  animationDelay: `${delay}s`
                 }}
               >
                 <div
@@ -128,7 +127,7 @@ export function LlmsOrbit() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    boxShadow: '0 4px 18px rgba(0,0,0,0.35)',
+                    boxShadow: '0 4px 18px rgba(0,0,0,0.35)'
                   }}
                 >
                   <img
@@ -157,7 +156,7 @@ export function LlmsOrbit() {
             background:
               'radial-gradient(circle at 36% 30%, #a8ffea 0%, #00c896 35%, #007d60 70%, #003d30 100%)',
             animation: 'orb-glow 3.2s ease-in-out infinite',
-            zIndex: 10,
+            zIndex: 10
           }}
         >
           <img

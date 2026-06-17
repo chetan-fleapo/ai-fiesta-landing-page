@@ -11,7 +11,6 @@ import {
   DeepSeekIcon,
   GeminiIcon,
   GrokIcon,
-  MetaIcon,
   MistralIcon,
   MoonshotIcon,
   PerplexityIcon,
@@ -72,7 +71,7 @@ function GreenCheck() {
 function TrustChips() {
   const { t } = useTranslation();
   return (
-    <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-foreground">
+    <div className="flex w-full flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-foreground">
       <span className="mb-3 flex items-center gap-2 md:mb-0">
         <Stars />
         <span className="text-muted-foreground">
@@ -269,7 +268,6 @@ function MobileHeroOrbit() {
     DeepSeekIcon,
     PerplexityIcon,
     GrokIcon,
-    MetaIcon,
     QwenIcon,
     MoonshotIcon,
     MistralIcon,
