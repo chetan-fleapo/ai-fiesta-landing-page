@@ -8,7 +8,7 @@ export function FooterCta() {
   const country = usePricingStore((s) => s.country);
 
   return (
-    <section className="relative overflow-hidden py-28">
+    <section className="relative overflow-hidden md:py-28">
       <div className="relative mx-auto max-w-[900px] px-4 text-center">
         <h2 className="font-heading text-4xl font-bold leading-tight text-foreground sm:text-[52px]">
           {t('footerCta.titleLine1')}

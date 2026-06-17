@@ -31,14 +31,14 @@ export function FeaturesCarousel() {
           <p className="mt-4 text-muted-foreground">{t('features.subtitle')}</p>
         </div>
 
-        <div className="relative mt-10 overflow-hidden rounded-3xl border border-[#1A231B] bg-card">
+        <div className="relative mt-10 overflow-hidden rounded-3xl border-[#1A231B] bg-card md:border">
           {/* Slide images */}
           <div className="relative md:pt-8">
             <div className="feature-glow-circles absolute left-[7%] top-[-10%] size-[200px] rounded-full" />
             <div className="feature-glow-circles absolute bottom-[-10%] right-[7%] size-[200px] rounded-full" />
             {/* Background Mesh */}
             <img
-              src="/images/Container.png"
+              src="/images/features-images-bg.webp"
               alt="Top right effect"
               aria-hidden="true"
               loading="lazy"
@@ -63,7 +63,7 @@ export function FeaturesCarousel() {
             />
 
             {/* Main Slides Wrapper */}
-            <div className="relative mx-auto rounded-t-3xl border border-b-0 border-[rgba(255,255,255,0.05);] bg-[rgba(0,0,0,0.10)] backdrop-blur-[10px] dark:bg-[rgba(255,255,255,0.10)] md:max-w-[75%] md:px-2 md:pt-2">
+            <div className="relative mx-auto rounded-t-3xl border-b-0 border-[rgba(255,255,255,0.05);] bg-[rgba(0,0,0,0.10)] backdrop-blur-[10px] dark:bg-[rgba(255,255,255,0.10)] md:max-w-[75%] md:border md:px-2 md:pt-2">
               {/* Rectangle Effect */}
               <img
                 src="/images/features-rectangle-effect.svg"
@@ -145,7 +145,8 @@ export function FeaturesCarousel() {
                   type="button"
                   onClick={() => goTo(index)}
                   className={cn(
-                    'relative flex-1 p-8 text-center transition-colors'
+                    'relative flex-1 p-8 text-center transition-colors',
+                    active !== index && 'hidden sm:block'
                   )}
                 >
                   {/* Progress bar */}

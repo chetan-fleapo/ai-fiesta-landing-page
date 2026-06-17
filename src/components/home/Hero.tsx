@@ -250,7 +250,7 @@ function MobileHeroOrbit() {
               zIndex: 10
             }}
           >
-            <Icon className="size-7" />
+            <Icon className="size-7 text-white" />
           </div>
         );
       })}

@@ -9,9 +9,12 @@ export function Footer() {
 
   return (
     <footer
-      className="relative overflow-hidden bg-cover bg-top pb-20 md:pb-0"
+      className="relative overflow-hidden bg-auto bg-no-repeat pb-20 dark:bg-cover md:bg-contain md:pb-0"
       id="Download"
-      style={{ backgroundImage: 'var(--footer-bg-image)' }}
+      style={{
+        backgroundImage: 'var(--footer-bg-image)',
+        backgroundPosition: 'center 100px'
+      }}
     >
       <FooterCta />
       <Particles />
@@ -88,6 +91,9 @@ export function Footer() {
             </a>
             <a href={LINKS.terms} className="hover:text-foreground">
               {t('footer.terms')}
+            </a>
+            <a href={LINKS.meshApi} className="hover:text-foreground">
+              {t('footer.meshApi')}
             </a>
           </nav>
           <div className="flex items-center gap-5 text-muted-foreground">
@@ -208,7 +214,7 @@ function Particles() {
       green: boolean;
       phase: number;
     }
-    const stars: Star[] = Array.from({ length: 140 }, () => ({
+    const stars: Star[] = Array.from({ length: 300 }, () => ({
       x: Math.random(),
       y: Math.random(),
       size: 0.6 + Math.random() * 0.9,
@@ -236,7 +242,7 @@ function Particles() {
           star.y * height,
           star.size * devicePixelRatio,
           0,
-          Math.PI * 0.7
+          Math.PI * 0.6
         );
         ctx.fill();
       }
@@ -253,7 +259,7 @@ function Particles() {
           cancelAnimationFrame(raf);
         }
       },
-      { threshold: 0.05 }
+      { threshold: 0.9 }
     );
     observer.observe(canvas);
     window.addEventListener('resize', resize);
@@ -268,7 +274,7 @@ function Particles() {
   return (
     <canvas
       ref={canvasRef}
-      className="pointer-events-none absolute inset-0 top-1/2 h-[300px] w-full translate-y-[-50%] opacity-80 dark:opacity-100"
+      className="pointer-events-none absolute inset-0 top-[60%] h-[250px] w-full translate-y-[-50%] opacity-80 dark:opacity-100"
       aria-hidden="true"
     />
   );

@@ -3,6 +3,7 @@ import { FAQ_ITEMS, type FaqBlock } from '@/constants/faq';
 import { LINKS } from '@/constants/links';
 import * as Accordion from '@radix-ui/react-accordion';
 import { useTranslation } from 'react-i18next';
+import { ArrowUpRight } from '../shared/ArrowUpRight';
 
 export function Faq() {
   const { t } = useTranslation();
@@ -18,60 +19,76 @@ export function Faq() {
             </h2>
             <p className="mt-4 text-muted-foreground">{t('faq.subtitle')}</p>
           </div>
-          <div className="border-token sticky bottom-4 mt-60 rounded-2xl border bg-card p-7">
-            <h3 className="font-heading text-3xl font-bold text-foreground">
-              {t('faq.contactTitle')}
-            </h3>
-            <p className="mt-2 text-sm text-muted-foreground">
-              {t('faq.contactSubtitle')}
-            </p>
-            <a
-              href={LINKS.supportEmail}
-              className="btn-pill-outline mt-5 px-6 py-3 text-sm"
-            >
-              {t('faq.contactCta')}
-            </a>
+          <div className="hidden lg:block">
+            <ContactCard />
           </div>
         </div>
 
-        <Accordion.Root type="single" collapsible className="w-full">
-          {FAQ_ITEMS.map((item) => (
-            <Accordion.Item
-              key={item.question}
-              value={item.question}
-              className="border-token border-b"
-            >
-              <Accordion.Header>
-                <Accordion.Trigger className="group flex w-full items-center justify-between gap-4 py-6 text-left font-heading text-lg font-bold text-foreground sm:text-xl">
-                  {item.question}
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180"
-                    aria-hidden="true"
-                  >
-                    <path d="M6 9l6 6 6-6" />
-                  </svg>
-                </Accordion.Trigger>
-              </Accordion.Header>
-              <Accordion.Content className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
-                <div className="space-y-3 pb-6 pr-8 text-[15px] leading-relaxed text-muted-foreground">
-                  {item.answer.map((block, index) => (
-                    <AnswerBlock key={index} block={block} />
-                  ))}
-                </div>
-              </Accordion.Content>
-            </Accordion.Item>
-          ))}
-        </Accordion.Root>
+        <div>
+          <Accordion.Root type="single" collapsible className="w-full">
+            {FAQ_ITEMS.map((item) => (
+              <Accordion.Item
+                key={item.question}
+                value={item.question}
+                className="border-token border-b"
+              >
+                <Accordion.Header>
+                  <Accordion.Trigger className="group flex w-full items-center justify-between gap-4 py-6 text-left font-heading text-lg font-bold text-foreground sm:text-xl">
+                    {item.question}
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180"
+                      aria-hidden="true"
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </Accordion.Trigger>
+                </Accordion.Header>
+                <Accordion.Content className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+                  <div className="space-y-3 pb-6 pr-8 text-[15px] leading-relaxed text-muted-foreground">
+                    {item.answer.map((block, index) => (
+                      <AnswerBlock key={index} block={block} />
+                    ))}
+                  </div>
+                </Accordion.Content>
+              </Accordion.Item>
+            ))}
+          </Accordion.Root>
+          <div className="mt-8 block lg:hidden">
+            <ContactCard />
+          </div>
+        </div>
       </div>
     </section>
+  );
+}
+
+function ContactCard() {
+  const { t } = useTranslation();
+
+  return (
+    <div className="border-token sticky bottom-4 rounded-2xl border bg-card p-7">
+      <h3 className="font-heading text-3xl font-bold text-foreground">
+        {t('faq.contactTitle')}
+      </h3>
+      <p className="mt-2 text-sm text-muted-foreground">
+        {t('faq.contactSubtitle')}
+      </p>
+      <a
+        href={LINKS.supportEmail}
+        className="contact-us-btn mt-5 inline-flex items-center gap-3 rounded-full px-6 py-3 text-base font-semibold"
+      >
+        {t('faq.contactCta')}
+        <ArrowUpRight />
+      </a>
+    </div>
   );
 }
 

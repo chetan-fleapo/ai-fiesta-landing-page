@@ -47,7 +47,7 @@
     --login-btn-bg-from: rgba(255, 255, 255, 0.1);
     --login-btn-bg-to: rgba(255, 255, 255, 0.8);
 
-    --footer-bg-image: none;
+    --footer-bg-image: url('/images/footer-light-bg.svg');
   }
 
   .dark {
@@ -137,6 +137,31 @@
       radial-gradient(
         30% 30% at 100% 50%,
         hsl(var(--glow) / 0.05),
+        transparent 70%
+      );
+  }
+
+  .feature-block {
+    @apply relative overflow-hidden rounded-3xl border bg-card;
+    border-color: hsl(var(--border));
+  }
+  .feature-block::before {
+    content: '';
+    @apply pointer-events-none absolute inset-0;
+    background:
+      radial-gradient(
+        60% 40% at 50% 110%,
+        hsl(var(--glow) / 0.1),
+        transparent 70%
+      ),
+      radial-gradient(
+        30% 30% at 0% 50%,
+        hsl(var(--glow) / 0.02),
+        transparent 70%
+      ),
+      radial-gradient(
+        30% 30% at 100% 50%,
+        hsl(var(--glow) / 0.02),
         transparent 70%
       );
   }
@@ -262,4 +287,25 @@
     rgba(0, 0, 0, 0.91) 0%,
     rgba(70, 70, 70, 0.91) 100%
   );
+}
+
+.contact-us-btn {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.05) 0%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+}
+.dark .contact-us-btn {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  backdrop-filter: blur(10px);
+}
+.contact-us-btn:hover {
+  transform: scale(1.02);
 }

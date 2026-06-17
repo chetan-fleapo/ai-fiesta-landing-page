@@ -1,5 +1,7 @@
 import { SectionBadge } from '@/components/shared/SectionBadge';
 import { SECONDARY_FEATURES } from '@/constants/features';
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export function SecondaryFeatures() {
@@ -28,7 +30,9 @@ export function SecondaryFeatures() {
             <FeatureBlock
               key={card.key}
               image={card.image}
+              lightImage={card.lightImage}
               cardKey={card.key}
+              aspectRatio="aspect-[2/1]"
             />
           ))}
         </div>
@@ -37,7 +41,9 @@ export function SecondaryFeatures() {
             <FeatureBlock
               key={card.key}
               image={card.image}
+              lightImage={card.lightImage}
               cardKey={card.key}
+              aspectRatio="aspect-video"
             />
           ))}
         </div>
@@ -46,20 +52,44 @@ export function SecondaryFeatures() {
   );
 }
 
-function FeatureBlock({ image, cardKey }: { image: string; cardKey: string }) {
+function FeatureBlock({
+  image,
+  lightImage,
+  cardKey,
+  aspectRatio = 'aspect-[2/1]'
+}: {
+  image: string;
+  lightImage?: string;
+  cardKey: string;
+  aspectRatio?: string;
+}) {
   const { t } = useTranslation();
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  const src =
+    mounted && resolvedTheme === 'light' && lightImage ? lightImage : image;
+
   return (
-    <div className="border-token overflow-hidden rounded-3xl border bg-card">
-      <img
-        src={image}
-        alt={t(`secondary.cards.${cardKey}.title`)}
-        width="820"
-        height="413"
-        loading="lazy"
-        decoding="async"
-        className="w-full object-cover"
-      />
-      <div className="feature-block rounded-3xl px-7 py-7 text-center backdrop-blur-[10px]">
+    <div className="overflow-hidden rounded-3xl border border-[#E8E8E8] bg-card dark:border-[rgba(255,255,255,0.10)]">
+      <div className={`${aspectRatio} w-full overflow-hidden`}>
+        <img
+          src={src}
+          alt={t(`secondary.cards.${cardKey}.title`)}
+          width="820"
+          height="413"
+          loading="lazy"
+          decoding="async"
+          className="h-full w-full object-cover"
+        />
+      </div>
+      <div
+        className="feature-block -mt-4 rounded-3xl border border-[rgba(232,232,232,0.60)] px-7 py-7 text-center backdrop-blur-[10px] dark:border-[rgba(255,255,255,0.10)]"
+        style={{
+          transform: 'scale(1.01)'
+        }}
+      >
         <h3 className="font-heading text-2xl font-bold text-foreground">
           {t(`secondary.cards.${cardKey}.title`)}
         </h3>
