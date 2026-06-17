@@ -87,7 +87,7 @@ export function Pricing() {
                 type="button"
                 onClick={() => selectPlan('yearly')}
                 className={cn(
-                  'block w-full rounded-2xl p-4 text-left transition-all duration-300',
+                  'relative block w-full rounded-2xl p-3 text-left transition-all duration-300 md:p-4',
                   period === 'yearly'
                     ? 'border border-accent-green'
                     : 'border border-[#E8E8E8] bg-white dark:border-foreground/5 dark:bg-foreground/5'
@@ -110,7 +110,7 @@ export function Pricing() {
                       </strong>
                     </span>
                     <span
-                      className="rounded-pill px-3 py-1 text-xs font-semibold text-white"
+                      className="rounded-pill px-3 py-1 text-[10px] font-semibold text-white md:text-xs"
                       style={{
                         background:
                           'linear-gradient(270deg, rgba(57, 212, 122, 0.70) -0.12%, rgba(0, 156, 208, 0.70) 95.23%), rgba(255, 255, 255, 0.05)'
@@ -137,7 +137,7 @@ export function Pricing() {
                 type="button"
                 onClick={() => selectPlan('monthly')}
                 className={cn(
-                  'block w-full rounded-2xl p-4 text-left transition-all duration-300',
+                  'relative block w-full rounded-2xl p-3 text-left transition-all duration-300 md:p-4',
                   period === 'monthly'
                     ? 'border border-accent-green'
                     : 'border border-[#E8E8E8] bg-white dark:border-foreground/5 dark:bg-foreground/5'
@@ -219,7 +219,7 @@ function FeatureList({ features }: { features: string[] }) {
           <img
             src="/images/feature-check.svg"
             alt=""
-            className="shrink-0"
+            className="size-5 shrink-0 md:size-6"
             aria-hidden="true"
           />
           <span className="text-sm text-foreground md:text-base">
@@ -233,7 +233,13 @@ function FeatureList({ features }: { features: string[] }) {
 
 function PlanRadio({ selected }: { selected: boolean }) {
   return selected ? (
-    <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+    <svg
+      width="26"
+      height="26"
+      viewBox="0 0 26 26"
+      aria-hidden="true"
+      className="absolute right-3 top-1/2 size-5 -translate-y-1/2 md:relative md:right-0 md:top-0 md:translate-y-0"
+    >
       <circle cx="13" cy="13" r="13" className="fill-black dark:fill-white" />
       <path
         d="M8 13.4l3.2 3.2 6.4-7"
@@ -246,7 +252,13 @@ function PlanRadio({ selected }: { selected: boolean }) {
       />
     </svg>
   ) : (
-    <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+    <svg
+      width="26"
+      height="26"
+      viewBox="0 0 26 26"
+      aria-hidden="true"
+      className="absolute right-3 top-1/2 size-5 -translate-y-1/2 md:relative md:right-0 md:top-0 md:translate-y-0"
+    >
       <circle
         cx="13"
         cy="13"

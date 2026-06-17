@@ -1,6 +1,7 @@
 import { ArrowRight } from '@/components/shared/ArrowRight';
 import { LINKS } from '@/constants/links';
 import { cn } from '@/lib/utils';
+import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ThemeToggle } from './ThemeToggle';
@@ -15,8 +16,12 @@ const NAV_ITEMS = [
 
 export function Navbar() {
   const { t } = useTranslation();
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const isLight = mounted && resolvedTheme === 'light';
 
   // Scroll-spy: highlight the nav link of the section in view
   useEffect(() => {
@@ -74,7 +79,10 @@ export function Navbar() {
           <ThemeToggle />
           <a
             href={LINKS.app}
-            className="login-btn hidden items-center gap-2 rounded-pill border px-6 py-3 font-heading text-base font-semibold text-foreground transition-colors md:inline-flex"
+            className={cn(
+              'login-btn hidden items-center gap-2 rounded-pill border px-6 py-3 font-heading text-base font-semibold text-foreground transition-colors md:inline-flex',
+              isLight && 'light-login-btn'
+            )}
           >
             {t('nav.login')}
             <ArrowRight className="size-5" />
