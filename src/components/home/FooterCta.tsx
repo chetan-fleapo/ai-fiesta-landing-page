@@ -10,7 +10,7 @@ export function FooterCta() {
   return (
     <section className="relative overflow-hidden md:py-28">
       <div className="relative mx-auto max-w-[900px] px-4 text-center">
-        <h2 className="font-heading text-3xl font-bold leading-tight text-foreground sm:text-[52px] md:text-4xl">
+        <h2 className="font-heading text-3xl font-bold leading-tight text-foreground sm:text-[52px]">
           {t('footerCta.titleLine1')}
           <br />
           <span className="brand-gradient-text">

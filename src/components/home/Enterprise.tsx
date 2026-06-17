@@ -21,7 +21,7 @@ export function Enterprise() {
             />
             <div className="relative flex flex-col items-center justify-between gap-8 md:items-start lg:flex-row lg:items-center">
               <div>
-                <h2 className="font-heading text-[28px] font-bold text-foreground sm:text-5xl md:text-4xl">
+                <h2 className="text-center font-heading text-[28px] font-bold text-foreground sm:text-5xl md:text-left md:text-4xl">
                   {t('enterprise.titlePrefix')}{' '}
                   <span className="brand-gradient-text">
                     {t('enterprise.titleHighlight')}

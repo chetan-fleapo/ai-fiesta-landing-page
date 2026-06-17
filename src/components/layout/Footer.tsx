@@ -9,7 +9,7 @@ export function Footer() {
 
   return (
     <footer
-      className="relative overflow-hidden bg-auto bg-no-repeat pb-20 [background-position:center_100px] dark:bg-cover max-md:[background-position:center_-90px] dark:max-md:[background-position:center_-32px] md:bg-contain md:pb-0"
+      className="relative overflow-hidden bg-auto bg-no-repeat pb-20 [background-position:center_100px] dark:bg-cover max-md:[background-position:center_-90px] dark:max-md:[background-position:center_-32px] md:bg-contain md:pb-0 md:dark:bg-contain"
       id="Download"
       style={{
         backgroundImage: 'var(--footer-bg-image)'
@@ -67,7 +67,7 @@ export function Footer() {
 
         {/* Giant fading wordmark */}
         <div
-          className="mt-16 select-none text-center font-heading text-[22vw] font-bold leading-none tracking-tight"
+          className="mt-16 select-none text-center font-heading text-[20vw] font-bold leading-none tracking-tight"
           style={{
             backgroundImage:
               'linear-gradient(180deg, hsl(var(--foreground) / 0.85), hsl(var(--foreground) / 0.05))',
@@ -84,7 +84,7 @@ export function Footer() {
           <p className="text-sm text-muted-foreground">
             {t('footer.copyright')}
           </p>
-          <nav className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground md:gap-8">
+          <nav className="flex flex-wrap items-center justify-center gap-3 text-sm text-muted-foreground md:gap-8">
             <a
               href={LINKS.privacy}
               className="whitespace-nowrap hover:text-foreground"

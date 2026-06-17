@@ -25,7 +25,7 @@ export function StatsBar() {
             <div className="font-heading text-2xl font-bold leading-tight text-foreground sm:text-[52px] md:text-[44px]">
               {card.value}
             </div>
-            <div className="mt-2 text-base text-muted-foreground">
+            <div className="mt-2 text-sm text-muted-foreground md:text-base">
               {card.label}
             </div>
           </div>
