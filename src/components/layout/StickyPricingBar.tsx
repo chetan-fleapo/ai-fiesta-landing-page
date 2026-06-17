@@ -30,14 +30,16 @@ export function StickyPricingBar() {
         href={getCheckoutLink(country, 'monthly')}
         onClick={(event) => onClick(event, 'monthly')}
         className={cn(
-          'flex flex-1 flex-col items-center rounded-pill border px-4 py-2.5 text-sm',
+          'whtie flex flex-1 flex-row items-center justify-center gap-1 rounded-pill border px-4 py-2.5 text-sm',
           period === 'monthly'
             ? 'border-accent-green text-foreground'
             : 'border-token-strong text-muted-foreground'
         )}
       >
-        <span className="font-semibold">{t('stickyBar.monthly')}</span>
-        <span>
+        <span className="whitespace-nowrap font-semibold">
+          {t('stickyBar.monthly')}
+        </span>
+        <span className="whitespace-nowrap">
           {prices.monthly}
           {t('pricing.perMonth')}
         </span>
@@ -45,13 +47,13 @@ export function StickyPricingBar() {
       <a
         href={getCheckoutLink(country, 'yearly')}
         onClick={(event) => onClick(event, 'yearly')}
-        className="btn-pill flex-1 flex-col gap-0 px-4 py-2.5 text-sm"
+        className="btn-pill flex-1 flex-row items-center justify-center gap-1 px-4 py-2.5 text-sm"
       >
-        <span className="font-semibold">
+        <span className="whitespace-nowrap font-semibold">
           {t('stickyBar.yearly')} ·{' '}
-          {t('stickyBar.save', { percent: prices.save })}
+          {/* {t('stickyBar.save', { percent: prices.save })} */}
         </span>
-        <span>
+        <span className="whitespace-nowrap">
           {prices.yearly}
           {t('pricing.perYear')}
         </span>

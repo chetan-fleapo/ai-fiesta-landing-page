@@ -12,12 +12,14 @@ export function Faq() {
     <section className="cv-auto py-16" id="faq">
       <div className="mx-auto grid max-w-[1280px] grid-cols-1 gap-12 px-4 md:px-6 lg:grid-cols-[480px_1fr]">
         <div className="flex h-full flex-col justify-between gap-3">
-          <div>
+          <div className="flex flex-col items-center justify-center md:items-start md:justify-start">
             <SectionBadge>{t('faq.label')}</SectionBadge>
-            <h2 className="mt-5 font-heading text-4xl font-bold leading-tight text-foreground sm:text-5xl">
+            <h2 className="mt-5 text-center font-heading text-[28px] font-bold leading-tight text-foreground sm:text-5xl md:text-left md:text-4xl">
               {t('faq.title')}
             </h2>
-            <p className="mt-4 text-muted-foreground">{t('faq.subtitle')}</p>
+            <p className="mt-4 text-center text-muted-foreground md:text-left">
+              {t('faq.subtitle')}
+            </p>
           </div>
           <div className="hidden lg:block">
             <ContactCard />
@@ -33,7 +35,7 @@ export function Faq() {
                 className="border-token border-b"
               >
                 <Accordion.Header>
-                  <Accordion.Trigger className="group flex w-full items-center justify-between gap-4 py-6 text-left font-heading text-lg font-bold text-foreground sm:text-xl">
+                  <Accordion.Trigger className="group flex w-full items-center justify-between gap-4 py-4 text-left font-heading text-lg font-bold text-foreground sm:text-xl md:py-6">
                     {item.question}
                     <svg
                       width="18"
@@ -75,15 +77,15 @@ function ContactCard() {
 
   return (
     <div className="border-token sticky bottom-4 rounded-2xl border bg-card p-7">
-      <h3 className="font-heading text-3xl font-bold text-foreground">
+      <h3 className="text-center font-heading text-xl font-bold text-foreground md:text-left md:text-3xl">
         {t('faq.contactTitle')}
       </h3>
-      <p className="mt-2 text-sm text-muted-foreground">
+      <p className="mt-2 text-center text-sm text-muted-foreground md:text-left">
         {t('faq.contactSubtitle')}
       </p>
       <a
         href={LINKS.supportEmail}
-        className="contact-us-btn mt-5 inline-flex items-center gap-3 rounded-full px-6 py-3 text-base font-semibold"
+        className="contact-us-btn mt-5 inline-flex w-full items-center justify-center gap-3 rounded-full px-6 py-3 text-base font-semibold md:w-auto"
       >
         {t('faq.contactCta')}
         <ArrowUpRight />

@@ -15,7 +15,7 @@ export function Testimonials() {
           <UseCasesIcon />
           {t('testimonials.labelUseCases')}
         </SectionBadge>
-        <h2 className="brand-gradient-text mt-5 font-heading text-4xl font-bold sm:text-5xl">
+        <h2 className="brand-gradient-text mt-5 font-heading text-[28px] font-bold sm:text-5xl md:text-4xl">
           {t('testimonials.labelTestimonials')}
         </h2>
 
@@ -32,7 +32,7 @@ export function Testimonials() {
         </div>
       </div>
 
-      <div className="marquee-wrapper mt-12 space-y-6">
+      <div className="marquee-wrapper mt-12 space-y-4 md:space-y-6">
         <MarqueeRow items={ROW_ONE} reverse={false} />
         <MarqueeRow items={ROW_TWO} reverse />
       </div>
@@ -53,7 +53,7 @@ function LaurelStat({
     <div className="flex items-center gap-2">
       <LaurelBranch flip />
       <div>
-        <div className="flex items-center justify-center gap-1.5 font-heading text-3xl font-bold text-foreground">
+        <div className="flex items-center justify-center gap-1.5 font-heading text-lg font-bold text-foreground md:text-3xl">
           {value}
           {star && (
             <svg
@@ -70,7 +70,7 @@ function LaurelStat({
             </svg>
           )}
         </div>
-        <div className="text-sm text-muted-foreground">{label}</div>
+        <div className="text-xs text-muted-foreground md:text-sm">{label}</div>
       </div>
       <LaurelBranch />
     </div>
@@ -316,7 +316,7 @@ function MarqueeRow({
   return (
     <div className="overflow-hidden">
       <div
-        className={`flex w-max gap-6 ${
+        className={`flex w-max gap-4 md:gap-6 ${
           reverse ? 'animate-marquee-reverse' : 'animate-marquee'
         }`}
       >

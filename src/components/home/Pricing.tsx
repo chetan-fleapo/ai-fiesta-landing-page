@@ -33,7 +33,7 @@ export function Pricing() {
           <SectionBadge>
             <PricingIcon /> {t('pricing.label')}
           </SectionBadge>
-          <h2 className="mt-5 font-heading text-4xl font-bold text-foreground sm:text-5xl">
+          <h2 className="mt-5 font-heading text-[28px] font-bold text-foreground sm:text-5xl md:text-4xl">
             {t('pricing.titleLine1')}
             <br />
             <span className="brand-gradient-text">
@@ -50,11 +50,11 @@ export function Pricing() {
 
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-[3fr_2fr]">
           {/* Features column */}
-          <div className="relative overflow-hidden rounded-3xl border border-[#009CD0] bg-card p-8 dark:border-[#1A231B] dark:bg-[url('/images/pricing-features-bg.avif')] dark:bg-cover dark:bg-center">
+          <div className="relative overflow-hidden rounded-3xl border border-[#009CD0] bg-card p-4 dark:border-[#1A231B] dark:bg-[url('/images/pricing-features-bg.avif')] dark:bg-cover dark:bg-center md:p-8">
             <h3 className="relative text-center font-heading text-[28px] font-bold text-foreground">
               {t('pricing.featuresHeading')}
             </h3>
-            <ul className="relative mt-6">
+            <ul className="relative mt-4 md:mt-6">
               {featureList.map((feature) => (
                 <li
                   key={feature}
@@ -91,12 +91,12 @@ export function Pricing() {
           </div>
 
           {/* Pricing column */}
-          <div className="border-token rounded-3xl border bg-card p-8">
+          <div className="border-token rounded-3xl border bg-card p-4 md:p-8">
             <h3 className="text-center font-heading text-[28px] font-bold text-foreground">
               {t('pricing.label')}
             </h3>
 
-            <div className="mt-6 space-y-4">
+            <div className="mt-4 space-y-4 md:mt-6">
               {/* Yearly card */}
               <button
                 type="button"
@@ -118,7 +118,7 @@ export function Pricing() {
               >
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex flex-wrap items-center gap-2.5">
-                    <span className="text-lg text-foreground">
+                    <span className="text-sm text-foreground md:text-lg">
                       {t('pricing.yearly')}{' '}
                       <strong>
                         {t('pricing.saveMore', { percent: prices.save })}
@@ -138,7 +138,7 @@ export function Pricing() {
                 </div>
                 <div className="mt-3 flex items-baseline gap-2.5">
                   <span className="old-price text-xl">{prices.oldPrice}</span>
-                  <span className="font-heading text-3xl font-bold text-foreground">
+                  <span className="font-heading text-xl font-bold text-foreground md:text-3xl">
                     {prices.yearly}
                   </span>
                   <span className="text-muted-foreground">
@@ -167,13 +167,13 @@ export function Pricing() {
                 }
               >
                 <div className="flex items-center justify-between gap-3">
-                  <span className="text-lg text-foreground">
+                  <span className="text-sm text-foreground md:text-lg">
                     {t('pricing.monthly')}
                   </span>
                   <PlanRadio selected={period === 'monthly'} />
                 </div>
                 <div className="mt-3 flex items-baseline gap-1">
-                  <span className="font-heading text-3xl font-bold text-foreground">
+                  <span className="font-heading text-xl font-bold text-foreground md:text-3xl">
                     {prices.monthly}
                   </span>
                   <span className="text-muted-foreground">
@@ -192,7 +192,7 @@ export function Pricing() {
                   setPaymentModalOpen(true);
                 }
               }}
-              className="btn-pill mt-7 w-full text-lg"
+              className="btn-pill mt-7 w-full whitespace-nowrap text-base md:text-lg"
             >
               {t('pricing.ctaPrefix')} {getCtaPriceText(country, period)}
               <ArrowRight />

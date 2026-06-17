@@ -10,7 +10,7 @@ export function Enterprise() {
     <section className="cv-auto py-16" id="Enterprise">
       <div className="mx-auto max-w-[1280px] px-4 md:px-6">
         <div className="rounded-3xl bg-[linear-gradient(135deg,#009CD0_0%,#39D47A_100%)] p-px">
-          <div className="relative overflow-hidden rounded-3xl bg-card px-8 py-12 sm:px-12">
+          <div className="relative overflow-hidden rounded-3xl bg-card p-6 sm:px-12 md:px-8 md:py-12">
             <div
               className="pointer-events-none absolute inset-0"
               style={{
@@ -19,20 +19,20 @@ export function Enterprise() {
               }}
               aria-hidden="true"
             />
-            <div className="relative flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
+            <div className="relative flex flex-col items-center justify-between gap-8 md:items-start lg:flex-row lg:items-center">
               <div>
-                <h2 className="font-heading text-4xl font-bold text-foreground sm:text-5xl">
+                <h2 className="font-heading text-[28px] font-bold text-foreground sm:text-5xl md:text-4xl">
                   {t('enterprise.titlePrefix')}{' '}
                   <span className="brand-gradient-text">
                     {t('enterprise.titleHighlight')}
                   </span>
                 </h2>
-                <ul className="mt-6 flex flex-col gap-3 sm:flex-row sm:gap-8">
+                <ul className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:gap-8 md:items-start">
                   {(['support', 'fullAccess', 'bestPrice'] as const).map(
                     (key) => (
                       <li
                         key={key}
-                        className="flex items-center gap-2.5 text-foreground"
+                        className="flex items-center gap-2.5 text-sm text-foreground md:text-base"
                       >
                         <GreenCheck />
                         {t(`enterprise.${key}`)}
@@ -46,7 +46,7 @@ export function Enterprise() {
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => capture('discovery_call_clicked')}
-                className="btn-pill shrink-0"
+                className="btn-pill w-full shrink-0 md:w-auto"
               >
                 {t('enterprise.cta')}
                 <ArrowRight />

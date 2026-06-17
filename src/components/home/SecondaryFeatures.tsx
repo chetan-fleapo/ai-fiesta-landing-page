@@ -16,7 +16,7 @@ export function SecondaryFeatures() {
           <SectionBadge>
             <FeatureIcon /> {t('secondary.label')}
           </SectionBadge>
-          <h2 className="mt-5 font-heading text-4xl font-bold text-foreground sm:text-5xl">
+          <h2 className="mt-5 font-heading text-[28px] font-bold text-foreground sm:text-5xl md:text-4xl">
             {t('secondary.titleLine1')}
             <br />
             <span className="brand-gradient-text">
@@ -90,10 +90,10 @@ function FeatureBlock({
           transform: 'scale(1.01)'
         }}
       >
-        <h3 className="font-heading text-2xl font-bold text-foreground">
+        <h3 className="font-heading text-xl font-bold text-foreground md:text-2xl">
           {t(`secondary.cards.${cardKey}.title`)}
         </h3>
-        <p className="mt-2 text-muted-foreground">
+        <p className="mt-2 text-base text-muted-foreground">
           {t(`secondary.cards.${cardKey}.description`)}
         </p>
       </div>

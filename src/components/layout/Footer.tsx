@@ -9,11 +9,10 @@ export function Footer() {
 
   return (
     <footer
-      className="relative overflow-hidden bg-auto bg-no-repeat pb-20 dark:bg-cover md:bg-contain md:pb-0"
+      className="relative overflow-hidden bg-auto bg-no-repeat pb-20 [background-position:center_100px] dark:bg-cover max-md:[background-position:center_-90px] dark:max-md:[background-position:center_-32px] md:bg-contain md:pb-0"
       id="Download"
       style={{
-        backgroundImage: 'var(--footer-bg-image)',
-        backgroundPosition: 'center 100px'
+        backgroundImage: 'var(--footer-bg-image)'
       }}
     >
       <FooterCta />
@@ -68,7 +67,7 @@ export function Footer() {
 
         {/* Giant fading wordmark */}
         <div
-          className="mt-16 select-none text-center font-heading text-[20vw] font-bold leading-none tracking-tight"
+          className="mt-16 select-none text-center font-heading text-[22vw] font-bold leading-none tracking-tight"
           style={{
             backgroundImage:
               'linear-gradient(180deg, hsl(var(--foreground) / 0.85), hsl(var(--foreground) / 0.05))',
@@ -85,14 +84,23 @@ export function Footer() {
           <p className="text-sm text-muted-foreground">
             {t('footer.copyright')}
           </p>
-          <nav className="flex items-center gap-8 text-sm text-muted-foreground">
-            <a href={LINKS.privacy} className="hover:text-foreground">
+          <nav className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground md:gap-8">
+            <a
+              href={LINKS.privacy}
+              className="whitespace-nowrap hover:text-foreground"
+            >
               {t('footer.privacyPolicy')}
             </a>
-            <a href={LINKS.terms} className="hover:text-foreground">
+            <a
+              href={LINKS.terms}
+              className="whitespace-nowrap hover:text-foreground"
+            >
               {t('footer.terms')}
             </a>
-            <a href={LINKS.meshApi} className="hover:text-foreground">
+            <a
+              href={LINKS.meshApi}
+              className="whitespace-nowrap hover:text-foreground"
+            >
               {t('footer.meshApi')}
             </a>
           </nav>
@@ -214,7 +222,7 @@ function Particles() {
       green: boolean;
       phase: number;
     }
-    const stars: Star[] = Array.from({ length: 300 }, () => ({
+    const stars: Star[] = Array.from({ length: 80 }, () => ({
       x: Math.random(),
       y: Math.random(),
       size: 0.6 + Math.random() * 0.9,

@@ -1,7 +1,8 @@
 import { ArrowRight } from '@/components/shared/ArrowRight';
 import { capture } from '@/lib/analytics';
 import { getDerivedMonthly, usePricingStore } from '@/stores/pricing';
-import { useEffect, useState } from 'react';
+import { useTheme } from 'next-themes';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   ByteDanceIcon,
@@ -58,11 +59,36 @@ function GreenCheck() {
           y2="2.15719"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#39D47A" />
-          <stop offset="1" stop-color="#009CD0" />
+          <stop stopColor="#39D47A" />
+          <stop offset="1" stopColor="#009CD0" />
         </linearGradient>
       </defs>
     </svg>
+  );
+}
+
+function TrustChips() {
+  const { t } = useTranslation();
+  return (
+    <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-foreground">
+      <span className="mb-3 flex items-center gap-2 md:mb-0">
+        <Stars />
+        <span className="text-muted-foreground">
+          {t('hero.trustedBy')}
+        </span>{' '}
+        <strong>{t('hero.trustedUsers')}</strong>
+      </span>
+      <span className="hidden h-6 w-px bg-[linear-gradient(180deg,rgba(186,186,186,0.00)_0%,#BABABA_50%,rgba(186,186,186,0.00)_100%)] sm:inline-block" />
+      <span className="flex items-center gap-1.5">
+        <GreenCheck /> <strong>{t('hero.trustModels')}</strong>
+      </span>
+      <span className="flex items-center gap-1.5">
+        <GreenCheck /> <strong>{t('hero.trustCancel')}</strong>
+      </span>
+      <span className="flex items-center gap-1.5">
+        <GreenCheck /> <strong>{t('hero.trustUpi')}</strong>
+      </span>
+    </div>
   );
 }
 
@@ -73,6 +99,7 @@ export function Hero() {
 
   return (
     <section className="relative overflow-hidden pb-10 pt-32">
+      <MobileParticles />
       <div
         className="pointer-events-none absolute left-0 top-0 h-full w-full bg-cover bg-top bg-no-repeat"
         style={{
@@ -93,7 +120,7 @@ export function Hero() {
             />
             {t('hero.ycBadge')}
           </div>
-          <div className="border-top-effect flex items-center gap-2 rounded-pill px-4 py-2 text-sm text-foreground">
+          <div className="border-top-effect hidden items-center gap-2 rounded-pill px-4 py-2 text-sm text-foreground md:flex">
             <img
               src="/images/live-badge.png"
               alt=""
@@ -114,25 +141,9 @@ export function Hero() {
           {t('hero.subtitle')}
         </p>
 
-        {/* Trust chips */}
-        <div className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-foreground">
-          <span className="flex items-center gap-2">
-            <Stars />
-            <span className="text-muted-foreground">
-              {t('hero.trustedBy')}
-            </span>{' '}
-            <strong>{t('hero.trustedUsers')}</strong>
-          </span>
-          <span className="hidden h-6 w-px bg-[linear-gradient(180deg,rgba(186,186,186,0.00)_0%,#BABABA_50%,rgba(186,186,186,0.00)_100%)] sm:inline-block" />
-          <span className="flex items-center gap-1.5">
-            <GreenCheck /> <strong>{t('hero.trustModels')}</strong>
-          </span>
-          <span className="flex items-center gap-1.5">
-            <GreenCheck /> <strong>{t('hero.trustCancel')}</strong>
-          </span>
-          <span className="flex items-center gap-1.5">
-            <GreenCheck /> <strong>{t('hero.trustUpi')}</strong>
-          </span>
+        {/* Trust chips — desktop only; mobile renders below the hero visual */}
+        <div className="mt-5 hidden sm:flex">
+          <TrustChips />
         </div>
 
         {/* Hero visual */}
@@ -149,16 +160,90 @@ export function Hero() {
           <MobileHeroOrbit />
         </div>
 
+        {/* Trust chips — mobile only */}
+        <div className="mt-5 sm:hidden">
+          <TrustChips />
+        </div>
+
         <a
           href="#pricing"
           onClick={() => capture('cta_clicked', { location: 'hero' })}
-          className="btn-pill mt-2 px-8 text-lg"
+          className="btn-pill mt-6 px-8 text-lg md:mt-2"
         >
           {t('hero.ctaPrefix')} {monthlyFromYearly}
           <ArrowRight />
         </a>
       </div>
     </section>
+  );
+}
+
+function MobileParticles() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { resolvedTheme } = useTheme();
+  const isLight = resolvedTheme === 'light';
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    resize();
+    window.addEventListener('resize', resize);
+
+    type Particle = {
+      x: number;
+      y: number;
+      r: number;
+      dx: number;
+      dy: number;
+      alpha: number;
+    };
+    const particles: Particle[] = Array.from({ length: 100 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.8 + 0.4,
+      dx: (Math.random() - 0.5) * 0.4,
+      dy: (Math.random() - 0.5) * 0.4,
+      alpha: Math.random() * 0.45 + 0.15
+    }));
+
+    let rafId: number;
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const p of particles) {
+        p.x += p.dx;
+        p.y += p.dy;
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 1);
+        ctx.fillStyle = isLight
+          ? `rgba(15, 61, 54, ${p.alpha})`
+          : `rgba(255, 255, 255, ${p.alpha})`;
+        ctx.fill();
+      }
+      rafId = requestAnimationFrame(animate);
+    };
+    animate();
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener('resize', resize);
+    };
+  }, [isLight]);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="pointer-events-none absolute inset-0 z-10 h-full w-full md:hidden"
+      aria-hidden="true"
+    />
   );
 }
 

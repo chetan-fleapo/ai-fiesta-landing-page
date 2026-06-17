@@ -29,7 +29,7 @@ export function Calculator() {
   return (
     <section className="py-16">
       <div className="mx-auto max-w-[1280px] px-4 md:px-6">
-        <h2 className="text-center font-heading text-4xl font-bold text-foreground sm:text-5xl">
+        <h2 className="text-center font-heading text-[28px] font-bold text-foreground sm:text-5xl md:text-4xl">
           {t('calculator.title')}
         </h2>
 
@@ -39,7 +39,7 @@ export function Calculator() {
             <p className="mb-5 text-muted-foreground">
               {t('calculator.subtitle')}
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap justify-center gap-4 md:justify-start">
               {CALCULATOR_MODELS.map((model) => (
                 <ModelTile
                   key={model.id}
@@ -53,7 +53,7 @@ export function Calculator() {
           </div>
 
           {/* Expense panel */}
-          <div className="border-token rounded-2xl border bg-card p-6">
+          <div className="border-token rounded-2xl border bg-card p-4 md:p-6">
             <div className="space-y-4">
               {selectedModels
                 .slice(0, expanded ? undefined : MAX_VISIBLE_ROWS)
@@ -130,7 +130,7 @@ export function Calculator() {
             <a
               href="#pricing"
               onClick={() => capture('cta_clicked', { location: 'calculator' })}
-              className="btn-pill-outline mt-6 w-full bg-white dark:bg-[rgba(0,0,0,0.20)]"
+              className="btn-pill-outline mt-6 w-full whitespace-nowrap bg-white dark:bg-[rgba(0,0,0,0.20)]"
             >
               {t('calculator.ctaPrefix')}{' '}
               <span className="brand-gradient-text font-bold">
@@ -163,7 +163,7 @@ function ModelTile({
       onClick={onClick}
       aria-pressed={selected}
       className={cn(
-        'relative flex items-center gap-3 rounded-xl border bg-card px-6 py-5 text-lg text-foreground transition-colors',
+        'relative flex items-center gap-3 rounded-xl border bg-card p-3 text-lg text-foreground transition-colors md:px-6 md:py-5',
         selected ? 'border-accent-green' : 'border-token hover:bg-muted',
         shaking && 'animate-shake'
       )}
@@ -183,7 +183,10 @@ function ModelTile({
         )}
       />
 
-      {model.name.replace(/ \(.+\)$/, '')}
+      <span className="hidden md:block">
+        {' '}
+        {model.name.replace(/ \(.+\)$/, '')}
+      </span>
       {selected && (
         <span className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-black shadow dark:bg-white [&>svg]:text-white dark:[&>svg]:text-black">
           <svg

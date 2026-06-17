@@ -16,13 +16,13 @@ export function StatsBar() {
 
   return (
     <section className="py-12">
-      <div className="mx-auto grid max-w-[1280px] grid-cols-1 gap-5 px-4 xs:grid-cols-2 md:grid-cols-4 md:px-6">
+      <div className="mx-auto grid max-w-[1280px] grid-cols-2 gap-3 px-4 md:grid-cols-4 md:gap-5 md:px-6">
         {cards.map((card) => (
           <div
             key={card.label}
-            className="trust-block flex flex-col items-center justify-center px-6 py-12 text-center"
+            className="trust-block flex flex-col items-center justify-center px-4 py-6 text-center md:px-6 md:py-12"
           >
-            <div className="font-heading text-[44px] font-bold leading-tight text-foreground sm:text-[52px]">
+            <div className="font-heading text-2xl font-bold leading-tight text-foreground sm:text-[52px] md:text-[44px]">
               {card.value}
             </div>
             <div className="mt-2 text-base text-muted-foreground">

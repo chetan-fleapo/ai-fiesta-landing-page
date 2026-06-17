@@ -22,7 +22,7 @@ export function FeaturesCarousel() {
             <FeatureIcon />
             {t('features.label')}
           </SectionBadge>
-          <h2 className="mt-5 font-heading text-4xl font-bold text-foreground sm:text-5xl">
+          <h2 className="mt-5 font-heading text-[28px] font-bold text-foreground sm:text-5xl md:text-4xl">
             {t('features.titleLine1')}{' '}
             <span className="brand-gradient-text">
               {t('features.titleLine2')}
@@ -31,7 +31,7 @@ export function FeaturesCarousel() {
           <p className="mt-4 text-muted-foreground">{t('features.subtitle')}</p>
         </div>
 
-        <div className="relative mt-10 overflow-hidden rounded-3xl border-[#1A231B] bg-card md:border">
+        <div className="relative mt-10 overflow-hidden rounded-3xl border border-[#1A231B] bg-card">
           {/* Slide images */}
           <div className="relative md:pt-8">
             <div className="feature-glow-circles absolute left-[7%] top-[-10%] size-[200px] rounded-full" />
@@ -83,7 +83,7 @@ export function FeaturesCarousel() {
                     loading={index === 0 ? 'eager' : 'lazy'}
                     decoding="async"
                     className={cn(
-                      'absolute inset-0 h-full w-full rounded-t-2xl border border-b-0 border-[rgba(255,255,255,0.30)] object-cover object-top transition-opacity [transition-duration:450ms]',
+                      'absolute inset-0 h-full w-full rounded-t-2xl border-b-0 border-[rgba(255,255,255,0.30)] object-cover object-top transition-opacity [transition-duration:450ms] md:border',
                       active === index ? 'opacity-100' : 'opacity-0'
                     )}
                   />
@@ -94,7 +94,7 @@ export function FeaturesCarousel() {
                   type="button"
                   aria-label="Previous feature"
                   onClick={prev}
-                  className="border-token-strong absolute left-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border bg-background/50 text-foreground backdrop-blur-sm transition-colors hover:bg-background/80"
+                  className="border-token-strong absolute left-4 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border bg-background/50 text-foreground backdrop-blur-sm transition-colors hover:bg-background/80 md:flex"
                 >
                   <svg
                     width="16"
@@ -114,7 +114,7 @@ export function FeaturesCarousel() {
                   type="button"
                   aria-label="Next feature"
                   onClick={next}
-                  className="border-token-strong absolute right-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border bg-background/50 text-foreground backdrop-blur-sm transition-colors hover:bg-background/80"
+                  className="border-token-strong absolute right-4 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border bg-background/50 text-foreground backdrop-blur-sm transition-colors hover:bg-background/80 md:flex"
                 >
                   <svg
                     width="16"
