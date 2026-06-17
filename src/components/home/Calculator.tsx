@@ -69,12 +69,18 @@ export function Calculator() {
                         width="28"
                         height="28"
                         loading="lazy"
-                        className="h-7 w-7 rounded-full"
+                        className={cn(
+                          'h-7 w-7 rounded-full',
+                          (model.id === 'chatgpt' ||
+                            model.id === 'grok' ||
+                            model.id === 'moonshot') &&
+                            'brightness-0 saturate-100 dark:brightness-0 dark:invert'
+                        )}
                       />
                       {model.name}
                     </span>
-                    <span className="font-semibold text-foreground">
-                      {formatPrice(model.yearlyPrice)}
+                    <span className="text-base font-semibold text-foreground">
+                      {formatPrice(model.yearlyPrice)}{' '}
                       <span className="font-normal text-muted-foreground">
                         {t('calculator.perYear')}
                       </span>
@@ -116,7 +122,7 @@ export function Calculator() {
               <span className="text-muted-foreground">
                 {t('calculator.totalExpense')}
               </span>
-              <span className="font-heading text-3xl font-bold text-foreground">
+              <span className="font-heading text-2xl font-bold text-foreground">
                 {formatPrice(total)} {t('calculator.perYear')}
               </span>
             </div>
@@ -124,7 +130,7 @@ export function Calculator() {
             <a
               href="#pricing"
               onClick={() => capture('cta_clicked', { location: 'calculator' })}
-              className="btn-pill-outline mt-6 w-full"
+              className="btn-pill-outline mt-6 w-full bg-white dark:bg-[rgba(0,0,0,0.20)]"
             >
               {t('calculator.ctaPrefix')}{' '}
               <span className="brand-gradient-text font-bold">
@@ -168,17 +174,24 @@ function ModelTile({
         width="28"
         height="28"
         loading="lazy"
-        className="h-7 w-7 rounded-full"
+        className={cn(
+          'h-7 w-7 rounded-full',
+          (model.id === 'chatgpt' ||
+            model.id === 'grok' ||
+            model.id === 'moonshot') &&
+            'brightness-0 saturate-100 dark:brightness-0 dark:invert'
+        )}
       />
+
       {model.name.replace(/ \(.+\)$/, '')}
       {selected && (
-        <span className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-white shadow">
+        <span className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-black shadow dark:bg-white [&>svg]:text-white dark:[&>svg]:text-black">
           <svg
             width="12"
             height="12"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="#000"
+            stroke="currentColor"
             strokeWidth="3"
             strokeLinecap="round"
             strokeLinejoin="round"

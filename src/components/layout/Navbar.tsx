@@ -45,23 +45,23 @@ export function Navbar() {
           <img
             src="/images/logo.svg"
             alt="AI Fiesta logo"
-            width="36"
-            height="36"
-            className="h-9 w-9"
+            width="44"
+            height="44"
+            className="h-11 w-11"
           />
-          <span className="font-heading text-xl font-bold text-foreground">
+          <span className="font-heading text-2xl font-bold text-foreground">
             {t('nav.brand')}
           </span>
         </a>
 
         {/* Desktop pill nav */}
-        <nav className="border-token absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-pill border bg-background/60 px-3 py-1 backdrop-blur-md md:flex">
+        <nav className="gradient-shadow absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-pill px-3 py-1 md:flex">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.key}
               href={item.href}
               className={cn(
-                'rounded-pill px-4 py-2.5 text-[15px] text-muted-foreground transition-colors hover:text-foreground',
+                'rounded-pill px-4 py-2.5 text-base font-normal text-muted-foreground transition-colors hover:text-foreground',
                 activeId === item.id && 'font-bold text-foreground'
               )}
             >
@@ -74,7 +74,7 @@ export function Navbar() {
           <ThemeToggle />
           <a
             href={LINKS.app}
-            className="border-token-strong hidden items-center gap-2 rounded-pill border bg-card px-6 py-3 font-heading text-[15px] font-semibold text-foreground transition-colors hover:bg-muted md:inline-flex"
+            className="login-btn hidden items-center gap-2 rounded-pill border bg-card px-6 py-3 font-heading text-[15px] font-semibold text-foreground transition-colors hover:bg-muted md:inline-flex"
           >
             {t('nav.login')}
             <ArrowRight />

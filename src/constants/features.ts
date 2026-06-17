@@ -7,7 +7,7 @@ export interface FeatureCard {
 }
 
 /** Original timings: per-card durations scaled by speedFactor 0.1. */
-export const CAROUSEL_SPEED_FACTOR = 0.1;
+export const CAROUSEL_SPEED_FACTOR = 0.11;
 
 export const FEATURE_CARDS: FeatureCard[] = [
   {

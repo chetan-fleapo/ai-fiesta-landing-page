@@ -9,16 +9,17 @@ export function Faq() {
 
   return (
     <section className="cv-auto py-16" id="faq">
-      <div className="mx-auto grid max-w-[1280px] grid-cols-1 gap-12 px-4 md:px-6 lg:grid-cols-[420px_1fr]">
-        <div>
-          <SectionBadge>{t('faq.label')}</SectionBadge>
-          <h2 className="mt-5 font-heading text-4xl font-bold leading-tight text-foreground sm:text-5xl">
-            {t('faq.title')}
-          </h2>
-          <p className="mt-4 text-muted-foreground">{t('faq.subtitle')}</p>
-
-          <div className="border-token mt-10 rounded-2xl border bg-card p-7">
-            <h3 className="font-heading text-xl font-bold text-foreground">
+      <div className="mx-auto grid max-w-[1280px] grid-cols-1 gap-12 px-4 md:px-6 lg:grid-cols-[480px_1fr]">
+        <div className="flex h-full flex-col justify-between gap-3">
+          <div>
+            <SectionBadge>{t('faq.label')}</SectionBadge>
+            <h2 className="mt-5 font-heading text-4xl font-bold leading-tight text-foreground sm:text-5xl">
+              {t('faq.title')}
+            </h2>
+            <p className="mt-4 text-muted-foreground">{t('faq.subtitle')}</p>
+          </div>
+          <div className="border-token sticky bottom-4 mt-60 rounded-2xl border bg-card p-7">
+            <h3 className="font-heading text-3xl font-bold text-foreground">
               {t('faq.contactTitle')}
             </h3>
             <p className="mt-2 text-sm text-muted-foreground">

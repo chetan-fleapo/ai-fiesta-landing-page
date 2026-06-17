@@ -1,16 +1,21 @@
 import { LINKS } from '@/constants/links';
 import { capture } from '@/lib/analytics';
+import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { FooterCta } from '../home/FooterCta';
 
 export function Footer() {
   const { t } = useTranslation();
 
   return (
     <footer
-      className="relative overflow-hidden bg-cover bg-top"
+      className="relative overflow-hidden bg-cover bg-top pb-20 md:pb-0"
       id="Download"
       style={{ backgroundImage: 'var(--footer-bg-image)' }}
     >
+      <FooterCta />
+      <Particles />
+
       <div className="mx-auto max-w-[1320px] px-4 pt-24 md:px-6">
         <div className="text-center">
           <p className="font-heading text-lg font-semibold text-foreground">
@@ -24,7 +29,7 @@ export function Footer() {
               onClick={() =>
                 capture('download_clicked', { store: 'app_store' })
               }
-              className="btn-pill-outline px-7 py-3 text-base"
+              className="btn-pill-outline bg-white px-7 py-3 text-base dark:bg-transparent"
             >
               <img
                 src="/images/apple.svg"
@@ -32,7 +37,7 @@ export function Footer() {
                 width="18"
                 height="20"
                 loading="lazy"
-                className="h-5 w-auto dark:invert-0"
+                className="h-5 w-auto invert dark:invert-0"
               />
               {t('download.appStore')}
             </a>
@@ -43,7 +48,7 @@ export function Footer() {
               onClick={() =>
                 capture('download_clicked', { store: 'play_store' })
               }
-              className="btn-pill-outline px-7 py-3 text-base"
+              className="btn-pill-outline bg-white px-7 py-3 text-base dark:bg-transparent"
             >
               <img
                 src="/images/playstore.svg"
@@ -91,7 +96,7 @@ export function Footer() {
               href={LINKS.instagram}
               target="_blank"
               rel="noreferrer"
-              className="hover:text-foreground"
+              className="text-foreground"
             >
               <svg
                 width="20"
@@ -118,7 +123,7 @@ export function Footer() {
               href={LINKS.x}
               target="_blank"
               rel="noreferrer"
-              className="hover:text-foreground"
+              className="text-foreground"
             >
               <svg
                 width="18"
@@ -135,7 +140,7 @@ export function Footer() {
               href={LINKS.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="hover:text-foreground"
+              className="text-foreground"
             >
               <svg
                 width="20"
@@ -152,7 +157,7 @@ export function Footer() {
               href={LINKS.youtube}
               target="_blank"
               rel="noreferrer"
-              className="hover:text-foreground"
+              className="text-foreground"
             >
               <svg
                 width="22"
@@ -168,5 +173,103 @@ export function Footer() {
         </div>
       </div>
     </footer>
+  );
+}
+
+/**
+ * Lightweight canvas replacement for the original particles.js star field.
+ * Pauses when offscreen and respects prefers-reduced-motion.
+ */
+function Particles() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let raf = 0;
+    let running = false;
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth * devicePixelRatio;
+      canvas.height = canvas.offsetHeight * devicePixelRatio;
+    };
+    resize();
+
+    interface Star {
+      x: number;
+      y: number;
+      size: number;
+      speed: number;
+      drift: number;
+      green: boolean;
+      phase: number;
+    }
+    const stars: Star[] = Array.from({ length: 140 }, () => ({
+      x: Math.random(),
+      y: Math.random(),
+      size: 0.6 + Math.random() * 0.9,
+      speed: 0.00012 + Math.random() * 0.0002,
+      drift: (Math.random() - 0.5) * 0.0002,
+      green: Math.random() < 0.25,
+      phase: Math.random() * Math.PI * 2
+    }));
+
+    const draw = (time: number) => {
+      const { width, height } = canvas;
+      ctx.clearRect(0, 0, width, height);
+      for (const star of stars) {
+        star.y -= star.speed;
+        star.x += star.drift;
+        if (star.y < 0) star.y = 1;
+        if (star.x < 0) star.x = 1;
+        if (star.x > 1) star.x = 0;
+        const twinkle = 0.55 + 0.4 * Math.sin(time / 900 + star.phase);
+        ctx.globalAlpha = twinkle;
+        ctx.fillStyle = star.green ? '#9affc4' : '#ffffff';
+        ctx.beginPath();
+        ctx.arc(
+          star.x * width,
+          star.y * height,
+          star.size * devicePixelRatio,
+          0,
+          Math.PI * 0.7
+        );
+        ctx.fill();
+      }
+      raf = requestAnimationFrame(draw);
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !running) {
+          running = true;
+          raf = requestAnimationFrame(draw);
+        } else if (!entry.isIntersecting && running) {
+          running = false;
+          cancelAnimationFrame(raf);
+        }
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(canvas);
+    window.addEventListener('resize', resize);
+
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(raf);
+      window.removeEventListener('resize', resize);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="pointer-events-none absolute inset-0 top-1/2 h-[300px] w-full translate-y-[-50%] opacity-80 dark:opacity-100"
+      aria-hidden="true"
+    />
   );
 }

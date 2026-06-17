@@ -23,6 +23,7 @@
    The light theme is derived from the same token set. */
 @layer base {
   :root {
+    --hero-bg-image: url('/images/hero-light-background.webp');
     --background: 0 0% 100%;
     --foreground: 0 0% 4%;
     --card: 0 0% 97%;
@@ -36,10 +37,22 @@
       rgba(255, 255, 255, 0)
     );
     --glow: 0 0% 0%;
+
+    --gradient-shadow-border: rgba(0, 0, 45, 0.09);
+    --gradient-shadow-bg: rgba(0, 0, 85, 0.02);
+    --gradient-shadow-shadow:
+      0 1px 2px 0 #fff inset, 0 13px 4px 0 rgba(207, 210, 217, 0.14) inset,
+      0 -4px 9px 0 rgba(17, 17, 19, 0.05) inset;
+    --login-btn-border: rgba(0, 0, 0, 0.2);
+    --login-btn-bg-from: rgba(255, 255, 255, 0.1);
+    --login-btn-bg-to: rgba(255, 255, 255, 0.8);
+
     --footer-bg-image: none;
   }
 
   .dark {
+    --hero-bg-image: url('/images/hero-bg.avif');
+
     --background: 0 0% 0%;
     --foreground: 0 0% 100%;
     --card: 0 0% 4.3%; /* #0B0B0B */
@@ -51,6 +64,14 @@
     --nav-gradient: linear-gradient(rgba(0, 0, 0, 0.5) 34%, rgba(0, 0, 0, 0));
     --glow: 0 0% 100%;
     --footer-bg-image: url('/images/footer-bg.avif');
+    --gradient-shadow-border: rgba(211, 237, 248, 0.11);
+    --gradient-shadow-bg: rgba(216, 244, 246, 0.04);
+    --gradient-shadow-shadow:
+      0 1px 2px 0 #696e77 inset, 0 4px 4px 0 rgba(105, 110, 119, 0) inset,
+      0 -4px 4px 0 rgba(17, 17, 19, 0) inset;
+    --login-btn-border: #696e77;
+    --login-btn-bg-from: rgba(237, 238, 240, 0);
+    --login-btn-bg-to: rgba(211, 237, 248, 0.11);
   }
 
   html {
@@ -105,7 +126,7 @@
     background:
       radial-gradient(
         60% 40% at 50% 110%,
-        hsl(var(--glow) / 0.09),
+        hsl(var(--glow) / 0.1),
         transparent 70%
       ),
       radial-gradient(
@@ -177,4 +198,68 @@
   html {
     scroll-behavior: auto;
   }
+}
+
+.gradient-shadow {
+  border: 1px solid var(--gradient-shadow-border);
+  background: var(--gradient-shadow-bg);
+  box-shadow: var(--gradient-shadow-shadow);
+  backdrop-filter: blur(10px);
+}
+
+.login-btn {
+  border: 1px solid var(--login-btn-border);
+  background: linear-gradient(
+    180deg,
+    var(--login-btn-bg-from) 0%,
+    var(--login-btn-bg-to) 100%
+  );
+  backdrop-filter: blur(10px);
+}
+
+.feature-glow-circles {
+  background: linear-gradient(
+    207deg,
+    rgba(57, 212, 122, 0.35) -0.27%,
+    rgba(0, 156, 208, 0.35) 99.94%
+  );
+  filter: blur(150px);
+}
+
+.limited-time-badge {
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow:
+    0 4px 23px 0 rgba(34, 163, 122, 0.28),
+    0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+}
+.border-top-effect {
+  border: 1px solid hsl(var(--border));
+  border-top-color: hsl(var(--border-strong));
+  background: rgba(193, 193, 193, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+:root:not(.dark) .section-badge {
+  border: 1px solid rgba(57, 212, 122, 0.5);
+  background: rgba(57, 212, 122, 0.04);
+  backdrop-filter: blur(10px);
+}
+
+.mobile-orbit-icon-circle {
+  border: 1.096px solid #93f2ff;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.91) 0%,
+    rgba(70, 70, 70, 0.91) 100%
+  );
+}
+.dark .mobile-orbit-icon-circle {
+  border: 1.096px solid #93f2ff;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.91) 0%,
+    rgba(70, 70, 70, 0.91) 100%
+  );
 }

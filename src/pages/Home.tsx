@@ -2,7 +2,6 @@ import { Calculator } from '@/components/home/Calculator';
 import { Enterprise } from '@/components/home/Enterprise';
 import { Faq } from '@/components/home/Faq';
 import { FeaturesCarousel } from '@/components/home/FeaturesCarousel';
-import { FooterCta } from '@/components/home/FooterCta';
 import { Hero } from '@/components/home/Hero';
 import { Pricing } from '@/components/home/Pricing';
 import { SecondaryFeatures } from '@/components/home/SecondaryFeatures';
@@ -64,7 +63,6 @@ export default function Home() {
         <SecondaryFeatures />
         <Enterprise />
         <Faq />
-        <FooterCta />
       </main>
       <Footer />
       <StickyPricingBar />
