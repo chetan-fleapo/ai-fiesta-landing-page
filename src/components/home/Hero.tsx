@@ -72,7 +72,7 @@ function TrustChips() {
   const { t } = useTranslation();
   return (
     <div className="flex w-full flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-foreground">
-      <span className="mb-3 flex items-center gap-2 md:mb-0">
+      <span className="flex items-center gap-2 md:mb-0">
         <Stars />
         <span className="text-muted-foreground">
           {t('hero.trustedBy')}
@@ -142,7 +142,7 @@ export function Hero() {
             </div>
           </div>
 
-          <h1 className="font-heading text-[44px] font-bold leading-[1.1] text-foreground xs:text-[56px]">
+          <h1 className="font-heading text-[40px] font-bold leading-[1.1] text-foreground xs:text-[56px] sm:text-[44px]">
             {t('hero.titleLine1')}{' '}
             <span className="brand-gradient-text block">
               {t('hero.titleLine2')}
@@ -154,7 +154,7 @@ export function Hero() {
           </p>
 
           {/* Trust chips — desktop only; mobile renders below the hero visual */}
-          <div className="mt-5 hidden sm:flex">
+          <div className="mt-5 hidden xs:flex">
             <TrustChips />
           </div>
         </div>
@@ -167,14 +167,14 @@ export function Hero() {
           height="528"
           fetchPriority="high"
           decoding="async"
-          className="mx-auto mt-8 hidden w-full max-w-[1000px] sm:block"
+          className="mx-auto mt-8 hidden w-full max-w-[1000px] xs:block"
         />
-        <div className="mt-8 sm:hidden">
+        <div className="mt-8 block xs:hidden">
           <MobileHeroOrbit />
         </div>
         <div className="px-4">
           {/* Trust chips — mobile only */}
-          <div className="mt-5 sm:hidden">
+          <div className="mt-5 xs:hidden">
             <TrustChips />
           </div>
 
@@ -255,7 +255,7 @@ function MobileParticles() {
   return (
     <canvas
       ref={canvasRef}
-      className="pointer-events-none absolute inset-0 z-10 h-full w-full md:hidden"
+      className="pointer-events-none absolute inset-0 z-10 h-full w-full sm:hidden"
       aria-hidden="true"
     />
   );

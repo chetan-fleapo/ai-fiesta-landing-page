@@ -51,7 +51,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >

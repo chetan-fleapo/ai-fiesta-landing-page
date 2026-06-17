@@ -114,7 +114,7 @@ export function FeaturesCarousel() {
                   type="button"
                   aria-label="Next feature"
                   onClick={next}
-                  className="border-token-strong absolute right-0 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border bg-background/50 text-foreground backdrop-blur-sm transition-colors hover:bg-background/80 md:right-4"
+                  className="border-token-strong absolute right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border bg-background/50 text-foreground backdrop-blur-sm transition-colors hover:bg-background/80"
                 >
                   <svg
                     width="16"

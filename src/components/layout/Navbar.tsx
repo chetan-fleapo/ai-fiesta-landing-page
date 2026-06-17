@@ -92,23 +92,23 @@ export function Navbar() {
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((open) => !open)}
-            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
+            className="flex h-8 w-8 flex-col items-center justify-center gap-[6px] md:hidden"
           >
             <span
               className={cn(
-                'h-0.5 w-6 bg-foreground transition-transform',
+                'h-0.5 w-5 bg-foreground transition-transform',
                 menuOpen && 'translate-y-2 rotate-45'
               )}
             />
             <span
               className={cn(
-                'h-0.5 w-6 bg-foreground transition-opacity',
+                'h-0.5 w-5 bg-foreground transition-opacity',
                 menuOpen && 'opacity-0'
               )}
             />
             <span
               className={cn(
-                'h-0.5 w-6 bg-foreground transition-transform',
+                'h-0.5 w-5 bg-foreground transition-transform',
                 menuOpen && '-translate-y-2 -rotate-45'
               )}
             />

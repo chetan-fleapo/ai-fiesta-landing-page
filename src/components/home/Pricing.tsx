@@ -121,7 +121,7 @@ export function Pricing() {
                   </div>
                   <PlanRadio selected={period === 'yearly'} />
                 </div>
-                <div className="mt-3 flex items-baseline gap-2.5">
+                <div className="mt-2 flex items-baseline gap-2.5 md:mt-3">
                   <span className="old-price text-xl">{prices.oldPrice}</span>
                   <span className="font-heading text-xl font-bold text-foreground md:text-3xl">
                     {prices.yearly}
@@ -157,7 +157,7 @@ export function Pricing() {
                   </span>
                   <PlanRadio selected={period === 'monthly'} />
                 </div>
-                <div className="mt-3 flex items-baseline gap-1">
+                <div className="mt-2 flex items-baseline gap-1 md:mt-3">
                   <span className="font-heading text-xl font-bold text-foreground md:text-3xl">
                     {prices.monthly}
                   </span>
