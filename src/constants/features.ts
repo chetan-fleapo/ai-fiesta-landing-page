@@ -7,7 +7,7 @@ export interface FeatureCard {
 }
 
 /** Original timings: per-card durations scaled by speedFactor 0.1. */
-export const CAROUSEL_SPEED_FACTOR = 0.1;
+export const CAROUSEL_SPEED_FACTOR = 0.11;
 
 export const FEATURE_CARDS: FeatureCard[] = [
   {
@@ -41,6 +41,8 @@ export interface SecondaryFeatureCard {
   /** i18n key under secondary.cards */
   key: string;
   image: string;
+  /** Optional light-mode variant; falls back to `image` if omitted. */
+  lightImage?: string;
   wide: boolean;
 }
 
@@ -48,18 +50,31 @@ export const SECONDARY_FEATURES: SecondaryFeatureCard[] = [
   {
     key: 'webResearch',
     image: '/images/secondary-web-research.svg',
+    lightImage: '/images/light-web-deepsearch.webp',
     wide: false
   },
-  { key: 'consensus', image: '/images/secondary-consensus.webp', wide: false },
-  { key: 'games', image: '/images/secondary-games.webp', wide: true },
+  {
+    key: 'consensus',
+    image: '/images/secondary-consensus.webp',
+    lightImage: '/images/consensus-light.webp',
+    wide: false
+  },
+  {
+    key: 'games',
+    image: '/images/secondary-games.webp',
+    lightImage: '/images/games-light.webp',
+    wide: true
+  },
   {
     key: 'transcribe',
     image: '/images/secondary-transcribe.webp',
+    lightImage: '/images/transcribe-audio-light.webp',
     wide: false
   },
   {
     key: 'promptEnhancement',
     image: '/images/secondary-prompt.webp',
+    lightImage: '/images/prompt-enhancement-light.webp',
     wide: true
   }
 ];

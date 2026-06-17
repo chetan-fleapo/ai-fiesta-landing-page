@@ -184,7 +184,8 @@ export const english = {
     footer: {
       copyright: '© 2026 AI Fiesta. All rights reserved.',
       privacyPolicy: 'Privacy Policy',
-      terms: 'Terms & Conditions'
+      terms: 'Terms & Conditions',
+      meshApi: 'mesh_api for devs'
     },
     paymentModal: {
       title: 'User Details',

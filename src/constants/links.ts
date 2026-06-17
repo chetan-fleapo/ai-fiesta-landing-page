@@ -2,6 +2,7 @@ export const LINKS = {
   app: 'https://chat.aifiesta.ai/',
   privacy: 'https://chat.aifiesta.ai/privacy',
   terms: 'https://chat.aifiesta.ai/terms',
+  meshApi: 'https://meshapi.ai/',
   calendly: 'https://calendly.com/vivek-aifiesta/30min?month=2026-02',
   supportEmail: 'mailto:Support@aifiesta.ai',
   appStore: 'https://apps.apple.com/in/app/ai-fiesta/id6749538209',
