@@ -3,6 +3,7 @@ import { LINKS } from '@/constants/links';
 import { cn } from '@/lib/utils';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { ThemeToggle } from './ThemeToggle';
 
 const NAV_ITEMS = [
   { key: 'features', href: '#Features', id: 'Features' },
@@ -39,7 +40,7 @@ export function Navbar() {
       className="fixed inset-x-0 top-0 z-50"
       style={{ background: 'var(--nav-gradient)' }}
     >
-      <div className="mx-auto flex h-20 max-w-[1320px] items-center justify-between px-4 md:px-6">
+      <div className="mx-auto flex max-w-[1320px] items-center justify-between px-4 py-4 md:px-6">
         <a href={LINKS.app} className="flex items-center gap-2.5">
           <img
             src="/images/logo.svg"
@@ -54,13 +55,13 @@ export function Navbar() {
         </a>
 
         {/* Desktop pill nav */}
-        <nav className="gradient-shadow absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-pill px-3 py-1 md:flex">
+        <nav className="nav-bar absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-pill px-3 py-1 md:flex">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.key}
               href={item.href}
               className={cn(
-                'rounded-pill px-4 py-2.5 text-base font-normal text-muted-foreground transition-colors hover:text-foreground',
+                'rounded-pill px-4 py-2.5 font-sora text-base font-semibold text-[rgba(0,0,0,0.71)] transition-colors hover:text-foreground dark:text-[#fffc]',
                 activeId === item.id && 'font-bold text-foreground'
               )}
             >
@@ -70,13 +71,13 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
-          {/* <ThemeToggle /> */}
+          <ThemeToggle />
           <a
             href={LINKS.app}
-            className="login-btn hidden items-center gap-2 rounded-pill border bg-card px-6 py-3 font-heading text-[15px] font-semibold text-foreground transition-colors hover:bg-muted md:inline-flex"
+            className="login-btn hidden items-center gap-2 rounded-pill border px-6 py-3 font-heading text-base font-semibold text-foreground transition-colors md:inline-flex"
           >
             {t('nav.login')}
-            <ArrowRight />
+            <ArrowRight className="size-5" />
           </a>
           {/* Mobile hamburger */}
           <button

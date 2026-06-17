@@ -8,7 +8,15 @@ export function Enterprise() {
 
   return (
     <section className="cv-auto py-16" id="Enterprise">
-      <div className="mx-auto max-w-[1280px] px-4 md:px-6">
+      <div className="relative mx-auto max-w-[1280px] overflow-hidden px-4 md:px-6">
+        <img
+          src="/images/enterprise-bg-effect.svg"
+          alt=""
+          width="18"
+          height="18"
+          loading="lazy"
+          className="absolute left-1/2 top-[-60px] z-10 h-full w-full -translate-x-1/2 rounded-full object-contain md:top-[-10%] md:w-[50%]"
+        />
         <div className="rounded-3xl bg-[linear-gradient(135deg,#009CD0_0%,#39D47A_100%)] p-px">
           <div className="relative overflow-hidden rounded-3xl bg-card p-6 sm:px-12 md:px-8 md:py-12">
             <div
@@ -19,7 +27,7 @@ export function Enterprise() {
               }}
               aria-hidden="true"
             />
-            <div className="relative flex flex-col items-center justify-between gap-8 md:items-start lg:flex-row lg:items-center">
+            <div className="relative flex flex-col items-center justify-between gap-5 md:items-start md:gap-8 lg:flex-row lg:items-center">
               <div>
                 <h2 className="text-center font-heading text-[28px] font-bold text-foreground sm:text-5xl md:text-left md:text-4xl">
                   {t('enterprise.titlePrefix')}{' '}
@@ -27,7 +35,7 @@ export function Enterprise() {
                     {t('enterprise.titleHighlight')}
                   </span>
                 </h2>
-                <ul className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:gap-8 md:items-start">
+                <ul className="mt-2 flex flex-wrap items-center justify-center gap-3 sm:gap-8 md:mt-6 md:items-start md:justify-start">
                   {(['support', 'fullAccess', 'bestPrice'] as const).map(
                     (key) => (
                       <li

@@ -50,26 +50,11 @@ export function Pricing() {
 
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-[3fr_2fr]">
           {/* Features column */}
-          <div className="relative overflow-hidden rounded-3xl border border-[#009CD0] bg-card p-4 dark:border-[#1A231B] dark:bg-[url('/images/pricing-features-bg.avif')] dark:bg-cover dark:bg-center md:p-8">
+          <div className="relative hidden overflow-hidden rounded-3xl border border-[#009CD0] bg-card p-4 dark:border-[#1A231B] dark:bg-[url('/images/pricing-features-bg.avif')] dark:bg-cover dark:bg-center md:block md:p-8">
             <h3 className="relative text-center font-heading text-[28px] font-bold text-foreground">
               {t('pricing.featuresHeading')}
             </h3>
-            <ul className="relative mt-4 md:mt-6">
-              {featureList.map((feature) => (
-                <li
-                  key={feature}
-                  className="flex items-center gap-3 bg-[linear-gradient(to_right,#00000014_0%,#00000014_50%,transparent_78%)] bg-[length:85%_1px] bg-left-bottom bg-no-repeat py-3 dark:bg-[linear-gradient(to_right,#ffffff14_0%,#ffffff14_50%,transparent_78%)]"
-                >
-                  <img
-                    src="/images/feature-check.svg"
-                    alt=""
-                    className="shrink-0"
-                    aria-hidden="true"
-                  />
-                  <span className="text-base text-foreground">{feature}</span>
-                </li>
-              ))}
-            </ul>
+            <FeatureList features={featureList} />
             <img
               src="/images/llms-on-circle.avif"
               alt=""
@@ -91,7 +76,7 @@ export function Pricing() {
           </div>
 
           {/* Pricing column */}
-          <div className="border-token rounded-3xl border bg-card p-4 md:p-8">
+          <div className="border-token rounded-3xl border bg-card bg-[url('/images/pricing-bg-mobile.webp')] bg-cover bg-center bg-no-repeat p-4 md:bg-none md:p-8">
             <h3 className="text-center font-heading text-[28px] font-bold text-foreground">
               {t('pricing.label')}
             </h3>
@@ -183,6 +168,10 @@ export function Pricing() {
               </button>
             </div>
 
+            <div className="md:hidden">
+              <FeatureList features={featureList} />
+            </div>
+
             <a
               href={getCheckoutLink(country, period)}
               onClick={(event) => {
@@ -216,6 +205,29 @@ export function Pricing() {
         </div>
       </div>
     </section>
+  );
+}
+
+function FeatureList({ features }: { features: string[] }) {
+  return (
+    <ul className="relative mt-4 md:mt-6">
+      {features.map((feature) => (
+        <li
+          key={feature}
+          className="flex items-center gap-3 bg-[linear-gradient(to_right,#00000014_0%,#00000014_50%,transparent_78%)] bg-[length:100%_1px] bg-left-bottom bg-no-repeat py-3 dark:bg-[linear-gradient(to_right,#ffffff14_0%,#ffffff14_50%,transparent_78%)] md:bg-[length:85%_1px]"
+        >
+          <img
+            src="/images/feature-check.svg"
+            alt=""
+            className="shrink-0"
+            aria-hidden="true"
+          />
+          <span className="text-sm text-foreground md:text-base">
+            {feature}
+          </span>
+        </li>
+      ))}
+    </ul>
   );
 }
 

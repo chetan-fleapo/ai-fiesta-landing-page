@@ -112,7 +112,7 @@ export function Hero() {
         {/* Badges */}
         <div className="px-4">
           <div className="mb-8 flex flex-wrap items-center justify-center gap-3">
-            <div className="border-top-effect flex items-center gap-2 rounded-pill px-4 py-2 text-sm text-foreground">
+            <div className="border-top-effect flex items-center gap-2 rounded-pill p-2">
               <img
                 src="/images/y-icon.avif"
                 alt=""
@@ -120,9 +120,11 @@ export function Hero() {
                 height="18"
                 className="h-[18px] w-[18px] rounded-full"
               />
-              {t('hero.ycBadge')}
+              <span className="text-sm font-normal text-[rgba(0,0,0,0.80)] dark:text-[rgba(255,255,255,0.60)]">
+                {t('hero.ycBadge')}
+              </span>
             </div>
-            <div className="border-top-effect hidden items-center gap-2 rounded-pill px-4 py-2 text-sm text-foreground md:flex">
+            <div className="border-top-effect hidden items-center gap-2 rounded-pill p-2 text-sm text-foreground md:flex">
               <img
                 src="/images/live-badge.png"
                 alt=""
@@ -130,16 +132,24 @@ export function Hero() {
                 height="18"
                 className="h-[18px] w-auto"
               />
-              {t('hero.liveBadge')}
+              <span className="text-sm font-normal text-[rgba(0,0,0,0.80)] dark:text-[rgba(255,255,255,0.60)]">
+                <span className="font-semibold">
+                  {' '}
+                  {t('hero.liveBadgeCount')}
+                </span>
+                {t('hero.liveBadge')}
+              </span>
             </div>
           </div>
 
-          <h1 className="font-heading text-[44px] font-bold leading-[1.1] text-foreground xs:text-[56px] sm:text-[72px]">
+          <h1 className="font-heading text-[44px] font-bold leading-[1.1] text-foreground xs:text-[56px]">
             {t('hero.titleLine1')}{' '}
-            <span className="brand-gradient-text">{t('hero.titleLine2')}</span>
+            <span className="brand-gradient-text block">
+              {t('hero.titleLine2')}
+            </span>
           </h1>
 
-          <p className="mx-auto mt-2 max-w-[720px] text-base text-muted-foreground sm:text-lg">
+          <p className="mx-auto mt-2 max-w-[720px] text-base text-muted-foreground sm:text-base">
             {t('hero.subtitle')}
           </p>
 
@@ -157,7 +167,7 @@ export function Hero() {
           height="528"
           fetchPriority="high"
           decoding="async"
-          className="mx-auto mt-8 hidden w-full max-w-[1100px] sm:block"
+          className="mx-auto mt-8 hidden w-full max-w-[1000px] sm:block"
         />
         <div className="mt-8 sm:hidden">
           <MobileHeroOrbit />

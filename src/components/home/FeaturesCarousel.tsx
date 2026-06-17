@@ -31,18 +31,18 @@ export function FeaturesCarousel() {
           <p className="mt-4 text-muted-foreground">{t('features.subtitle')}</p>
         </div>
 
-        <div className="relative mt-10 overflow-hidden rounded-3xl border border-[#1A231B] bg-card">
+        <div className="relative mt-10 overflow-hidden rounded-3xl border border-b-0 bg-card dark:border-[#1A231B]">
           {/* Slide images */}
           <div className="relative md:pt-8">
             <div className="feature-glow-circles absolute left-[7%] top-[-10%] size-[200px] rounded-full" />
             <div className="feature-glow-circles absolute bottom-[-10%] right-[7%] size-[200px] rounded-full" />
             {/* Background Mesh */}
             <img
-              src="/images/features-images-bg.webp"
+              src="/images/features-images-bg.avif"
               alt="Top right effect"
               aria-hidden="true"
               loading="lazy"
-              className="pointer-events-none absolute left-0 top-0 hidden h-full w-full select-none md:block"
+              className="pointer-events-none absolute left-0 top-0 z-[1] hidden h-full w-full select-none object-cover md:block"
             />
 
             {/* Effect Top Right */}
@@ -51,7 +51,7 @@ export function FeaturesCarousel() {
               alt="Top right effect"
               aria-hidden="true"
               loading="lazy"
-              className="pointer-events-none absolute right-0 top-0 z-10 hidden h-auto w-40 select-none dark:opacity-100 md:block"
+              className="pointer-events-none absolute right-0 top-0 z-10 hidden h-auto w-40 select-none dark:opacity-70 md:block"
             />
             {/* Effect Top Left */}
             <img
@@ -59,18 +59,18 @@ export function FeaturesCarousel() {
               alt="Top right effect"
               aria-hidden="true"
               loading="lazy"
-              className="pointer-events-none absolute bottom-0 left-0 z-10 hidden h-auto w-40 select-none dark:opacity-100 md:block"
+              className="pointer-events-none absolute bottom-0 left-0 z-10 hidden h-auto w-40 select-none dark:opacity-70 md:block"
             />
 
             {/* Main Slides Wrapper */}
-            <div className="relative mx-auto rounded-t-3xl border-b-0 border-[rgba(255,255,255,0.05);] bg-[rgba(0,0,0,0.10)] backdrop-blur-[10px] dark:bg-[rgba(255,255,255,0.10)] md:max-w-[75%] md:border md:px-2 md:pt-2">
+            <div className="relative z-20 mx-auto rounded-t-3xl !border-b-0 border-[rgba(255,255,255,0.05);] bg-[rgba(0,0,0,0.10)] backdrop-blur-[10px] dark:bg-[rgba(255,255,255,0.10)] md:max-w-[75%] md:border md:px-2 md:pt-2">
               {/* Rectangle Effect */}
               <img
                 src="/images/features-rectangle-effect.svg"
                 alt="Top right effect"
                 aria-hidden="true"
                 loading="lazy"
-                className="pointer-events-none absolute left-[-6px] top-[-6px] z-10 hidden h-auto w-40 select-none dark:opacity-100 md:block"
+                className="pointer-events-none absolute left-[-4px] top-[-4px] z-10 hidden h-auto w-40 select-none dark:opacity-100 md:block"
               />
               <div className="relative mx-auto aspect-[1216/800] w-full overflow-hidden">
                 {FEATURE_CARDS.map((card, index) => (
@@ -94,7 +94,7 @@ export function FeaturesCarousel() {
                   type="button"
                   aria-label="Previous feature"
                   onClick={prev}
-                  className="border-token-strong absolute left-4 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border bg-background/50 text-foreground backdrop-blur-sm transition-colors hover:bg-background/80 md:flex"
+                  className="border-token-strong absolute left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border bg-background/50 text-foreground backdrop-blur-sm transition-colors hover:bg-background/80 md:left-4"
                 >
                   <svg
                     width="16"
@@ -114,7 +114,7 @@ export function FeaturesCarousel() {
                   type="button"
                   aria-label="Next feature"
                   onClick={next}
-                  className="border-token-strong absolute right-4 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border bg-background/50 text-foreground backdrop-blur-sm transition-colors hover:bg-background/80 md:flex"
+                  className="border-token-strong absolute right-0 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border bg-background/50 text-foreground backdrop-blur-sm transition-colors hover:bg-background/80 md:right-4"
                 >
                   <svg
                     width="16"

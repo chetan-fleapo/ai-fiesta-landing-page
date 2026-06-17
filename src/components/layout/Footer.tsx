@@ -1,4 +1,5 @@
 import { LINKS } from '@/constants/links';
+import { useIsMobile } from '@/hooks/useMobile';
 import { capture } from '@/lib/analytics';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -9,7 +10,7 @@ export function Footer() {
 
   return (
     <footer
-      className="relative overflow-hidden bg-auto bg-no-repeat pb-20 [background-position:center_100px] dark:bg-cover max-md:[background-position:center_-90px] dark:max-md:[background-position:center_-32px] md:bg-contain md:pb-0 md:dark:bg-contain"
+      className="relative overflow-hidden bg-cover bg-center bg-no-repeat pb-28 pt-10 md:pb-0 md:pt-0"
       id="Download"
       style={{
         backgroundImage: 'var(--footer-bg-image)'
@@ -18,7 +19,7 @@ export function Footer() {
       <FooterCta />
       <Particles />
 
-      <div className="mx-auto max-w-[1320px] px-4 pt-24 md:px-6">
+      <div className="mx-auto max-w-[1320px] px-4 pt-32 md:px-6 md:pt-24">
         <div className="text-center">
           <p className="font-heading text-lg font-semibold text-foreground">
             {t('download.title')}
@@ -31,7 +32,7 @@ export function Footer() {
               onClick={() =>
                 capture('download_clicked', { store: 'app_store' })
               }
-              className="btn-pill-outline bg-white px-7 py-3 text-base dark:bg-transparent"
+              className="btn-pill-outline bg-white px-7 py-3 text-sm dark:bg-transparent sm:text-base"
             >
               <img
                 src="/images/apple.svg"
@@ -50,7 +51,7 @@ export function Footer() {
               onClick={() =>
                 capture('download_clicked', { store: 'play_store' })
               }
-              className="btn-pill-outline bg-white px-7 py-3 text-base dark:bg-transparent"
+              className="btn-pill-outline bg-white px-7 py-3 text-sm dark:bg-transparent sm:text-base"
             >
               <img
                 src="/images/playstore.svg"
@@ -67,7 +68,7 @@ export function Footer() {
 
         {/* Giant fading wordmark */}
         <div
-          className="mt-16 select-none text-center font-heading text-[20vw] font-bold leading-none tracking-tight"
+          className="mb-4 mt-12 select-none text-center font-heading text-[20vw] font-bold leading-none tracking-tight"
           style={{
             backgroundImage:
               'linear-gradient(180deg, hsl(var(--foreground) / 0.85), hsl(var(--foreground) / 0.05))',
@@ -80,26 +81,28 @@ export function Footer() {
           AI&nbsp;Fiesta
         </div>
 
-        <div className="border-token flex flex-col items-center justify-between gap-5 border-t py-8 sm:flex-row">
-          <p className="text-sm text-muted-foreground">
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-foreground/15 to-transparent" />
+
+        <div className="flex flex-col items-center justify-between gap-5 py-8 sm:flex-row md:pb-20 md:pt-12">
+          <p className="text-sm font-medium text-[rgba(0,0,0,0.60)] dark:text-[#fff9]">
             {t('footer.copyright')}
           </p>
           <nav className="flex flex-wrap items-center justify-center gap-3 text-sm text-muted-foreground md:gap-8">
             <a
               href={LINKS.privacy}
-              className="whitespace-nowrap hover:text-foreground"
+              className="whitespace-nowrap font-medium text-[rgba(0,0,0,0.60)] hover:text-foreground dark:text-[#fff9]"
             >
               {t('footer.privacyPolicy')}
             </a>
             <a
               href={LINKS.terms}
-              className="whitespace-nowrap hover:text-foreground"
+              className="whitespace-nowrap font-medium text-[rgba(0,0,0,0.60)] hover:text-foreground dark:text-[#fff9]"
             >
               {t('footer.terms')}
             </a>
             <a
               href={LINKS.meshApi}
-              className="whitespace-nowrap hover:text-foreground"
+              className="whitespace-nowrap font-medium text-[rgba(0,0,0,0.60)] hover:text-foreground dark:text-[#fff9]"
             >
               {t('footer.meshApi')}
             </a>
@@ -196,6 +199,7 @@ export function Footer() {
  */
 function Particles() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -222,7 +226,7 @@ function Particles() {
       green: boolean;
       phase: number;
     }
-    const stars: Star[] = Array.from({ length: 80 }, () => ({
+    const stars: Star[] = Array.from({ length: isMobile ? 90 : 300 }, () => ({
       x: Math.random(),
       y: Math.random(),
       size: 0.6 + Math.random() * 0.9,
@@ -277,12 +281,12 @@ function Particles() {
       cancelAnimationFrame(raf);
       window.removeEventListener('resize', resize);
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <canvas
       ref={canvasRef}
-      className="pointer-events-none absolute inset-0 top-[60%] h-[250px] w-full translate-y-[-50%] opacity-80 dark:opacity-100"
+      className="pointer-events-none absolute inset-0 top-[70%] h-[300px] w-full translate-y-[-50%] opacity-80 dark:opacity-100 md:top-[50%]"
       aria-hidden="true"
     />
   );

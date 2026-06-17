@@ -175,7 +175,7 @@ function ModelTile({
         height="28"
         loading="lazy"
         className={cn(
-          'h-7 w-7 rounded-full',
+          'h-7 w-7 rounded-full object-contain',
           (model.id === 'chatgpt' ||
             model.id === 'grok' ||
             model.id === 'moonshot') &&

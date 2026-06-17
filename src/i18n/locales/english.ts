@@ -11,7 +11,8 @@ export const english = {
     },
     hero: {
       ycBadge: 'Built by Y Combinator Alumni',
-      liveBadge: '5,678 Users Joined Today',
+      liveBadgeCount: '5,678',
+      liveBadge: ' Users Joined Today',
       titleLine1: 'Every AI model.',
       titleLine2: 'One app.',
       subtitle:

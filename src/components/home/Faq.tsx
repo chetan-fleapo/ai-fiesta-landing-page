@@ -12,7 +12,7 @@ export function Faq() {
     <section className="cv-auto py-16" id="faq">
       <div className="mx-auto grid max-w-[1280px] grid-cols-1 gap-12 px-4 md:px-6 lg:grid-cols-[480px_1fr]">
         <div className="flex h-full flex-col justify-between gap-3">
-          <div className="flex flex-col items-center justify-center md:items-start md:justify-start">
+          <div className="flex flex-col items-center justify-center md:sticky md:top-24 md:mb-56 md:items-start md:justify-start">
             <SectionBadge>{t('faq.label')}</SectionBadge>
             <h2 className="mt-5 text-center font-heading text-[28px] font-bold leading-tight text-foreground sm:text-5xl md:text-left md:text-4xl">
               {t('faq.title')}
@@ -35,7 +35,7 @@ export function Faq() {
                 className="border-token border-b"
               >
                 <Accordion.Header>
-                  <Accordion.Trigger className="group flex w-full items-center justify-between gap-4 py-4 text-left font-heading text-lg font-bold text-foreground sm:text-xl md:py-6">
+                  <Accordion.Trigger className="group flex w-full items-center justify-between gap-4 py-4 text-left font-heading text-lg font-bold leading-6 text-foreground sm:text-xl md:py-6">
                     {item.question}
                     <svg
                       width="18"
