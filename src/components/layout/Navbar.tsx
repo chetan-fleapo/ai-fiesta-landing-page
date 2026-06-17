@@ -4,7 +4,6 @@ import { cn } from '@/lib/utils';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ThemeToggle } from './ThemeToggle';
 
 const NAV_ITEMS = [
   { key: 'features', href: '#Features', id: 'Features' },
@@ -76,7 +75,7 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
           <a
             href={LINKS.app}
             className={cn(
