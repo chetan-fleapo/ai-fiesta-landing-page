@@ -119,7 +119,7 @@ export function FeaturesCarousel() {
               type="button"
               aria-label="Previous feature"
               onClick={prev}
-              className="absolute left-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center text-foreground transition-colors md:hidden"
+              className="absolute left-0 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center text-foreground transition-colors md:hidden"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
@@ -127,7 +127,7 @@ export function FeaturesCarousel() {
               type="button"
               aria-label="Next feature"
               onClick={next}
-              className="absolute right-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center text-foreground transition-colors md:hidden"
+              className="absolute right-0 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center text-foreground transition-colors md:hidden"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
