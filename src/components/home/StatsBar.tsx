@@ -22,7 +22,7 @@ export function StatsBar() {
             key={card.label}
             className="trust-block flex flex-col items-center justify-center px-4 py-6 text-center md:px-6 md:py-12"
           >
-            <div className="font-heading text-2xl font-bold leading-tight text-foreground sm:text-[52px] md:text-[44px]">
+            <div className="font-heading text-2xl font-bold leading-tight text-foreground sm:text-4xl md:text-[44px]">
               {card.value}
             </div>
             <div className="mt-2 text-sm text-foreground md:text-base">

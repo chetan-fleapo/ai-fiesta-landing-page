@@ -42,7 +42,7 @@ export function Pricing() {
           </h2>
           <div className="limited-time-badge mx-auto mt-8 inline-flex items-center gap-2 rounded-full px-3 py-2 sm:gap-3 sm:px-5 sm:py-2.5">
             <LimitedTimeIcon />
-            <p className="text-left text-sm text-foreground md:text-lg">
+            <p className="text-left text-sm !text-foreground md:text-lg">
               {t('pricing.subtitle')}
             </p>
           </div>

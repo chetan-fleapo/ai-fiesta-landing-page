@@ -1,3 +1,5 @@
+import { ChevronLeft } from '@/components/shared/ChevronLeft';
+import { ChevronRight } from '@/components/shared/ChevronRight';
 import { SectionBadge } from '@/components/shared/SectionBadge';
 import { CAROUSEL_SPEED_FACTOR, FEATURE_CARDS } from '@/constants/features';
 import { useAutoCarousel } from '@/hooks/useAutoCarousel';
@@ -89,53 +91,46 @@ export function FeaturesCarousel() {
                   />
                 ))}
 
-                {/* Prev / next arrows */}
+                {/* Prev / next arrows — desktop only */}
                 <button
                   type="button"
                   aria-label="Previous feature"
                   onClick={prev}
-                  className="border-token-strong absolute left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border bg-background/50 text-foreground backdrop-blur-sm transition-colors hover:bg-background/80 md:left-4"
+                  className="border-token-strong absolute left-4 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border bg-background/50 text-foreground backdrop-blur-sm transition-colors hover:bg-background/80 md:flex"
                 >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M15 18l-6-6 6-6" />
-                  </svg>
+                  <ChevronLeft />
                 </button>
                 <button
                   type="button"
                   aria-label="Next feature"
                   onClick={next}
-                  className="border-token-strong absolute right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border bg-background/50 text-foreground backdrop-blur-sm transition-colors hover:bg-background/80"
+                  className="border-token-strong absolute right-4 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border bg-background/50 text-foreground backdrop-blur-sm transition-colors hover:bg-background/80 md:flex"
                 >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M9 6l6 6-6 6" />
-                  </svg>
+                  <ChevronRight />
                 </button>
               </div>
             </div>
           </div>
 
           {/* Tab cards */}
-          <div className="border-token flex flex-col gap-1 border-t bg-[radial-gradient(63.36%_32.69%_at_0%_99.91%,rgba(255,255,255,0.10)_0%,rgba(255,255,255,0)_100%),radial-gradient(50%_25.8%_at_100%_100%,rgba(255,255,255,0.10)_0%,rgba(255,255,255,0)_100%)] sm:flex-row sm:items-stretch">
+          <div className="border-token relative flex flex-col gap-1 border-t bg-[radial-gradient(63.36%_32.69%_at_0%_99.91%,rgba(255,255,255,0.10)_0%,rgba(255,255,255,0)_100%),radial-gradient(50%_25.8%_at_100%_100%,rgba(255,255,255,0.10)_0%,rgba(255,255,255,0)_100%)] sm:flex-row sm:items-stretch">
+            {/* Prev / next arrows — mobile only, on tab cards */}
+            <button
+              type="button"
+              aria-label="Previous feature"
+              onClick={prev}
+              className="absolute left-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center text-foreground transition-colors md:hidden"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              type="button"
+              aria-label="Next feature"
+              onClick={next}
+              className="absolute right-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center text-foreground transition-colors md:hidden"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
             {FEATURE_CARDS.map((card, index) => (
               <Fragment key={card.key}>
                 {index > 0 && (

@@ -10,7 +10,7 @@ export function Footer() {
 
   return (
     <footer
-      className="relative overflow-hidden bg-cover bg-center bg-no-repeat pb-28 pt-10 md:pb-0 md:pt-0"
+      className="relative overflow-hidden bg-cover bg-center bg-no-repeat pb-28 pt-10 sm:pb-0 md:pt-0"
       id="Download"
       style={{
         backgroundImage: 'var(--footer-bg-image)'

@@ -183,7 +183,7 @@ function ModelTile({
         )}
       />
 
-      <span className="hidden md:block">
+      <span className="hidden xs:block">
         {' '}
         {model.name.replace(/ \(.+\)$/, '')}
       </span>
