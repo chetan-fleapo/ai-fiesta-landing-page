@@ -24,7 +24,7 @@ export function FeaturesCarousel() {
             <FeatureIcon />
             {t('features.label')}
           </SectionBadge>
-          <h2 className="mt-5 font-heading text-[28px] font-bold text-foreground sm:text-5xl md:text-4xl">
+          <h2 className="mt-5 font-heading text-[28px] font-bold text-foreground sm:text-3xl md:text-4xl">
             {t('features.titleLine1')}{' '}
             <span className="brand-gradient-text">
               {t('features.titleLine2')}
@@ -134,14 +134,14 @@ export function FeaturesCarousel() {
             {FEATURE_CARDS.map((card, index) => (
               <Fragment key={card.key}>
                 {index > 0 && (
-                  <span className="hidden w-px shrink-0 bg-[linear-gradient(180deg,rgba(186,186,186,0.00)_0%,#BABABA_50%,rgba(186,186,186,0.00)_100%)] sm:block" />
+                  <span className="hidden w-px shrink-0 bg-[linear-gradient(180deg,rgba(186,186,186,0.00)_0%,#BABABA_50%,rgba(186,186,186,0.00)_100%)] md:block" />
                 )}
                 <button
                   type="button"
                   onClick={() => goTo(index)}
                   className={cn(
                     'relative flex-1 p-8 text-center transition-colors',
-                    active !== index && 'hidden sm:block'
+                    active !== index && 'hidden md:block'
                   )}
                 >
                   {/* Progress bar */}

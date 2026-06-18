@@ -14,7 +14,7 @@ export function Faq() {
         <div className="flex h-full flex-col justify-between gap-3">
           <div className="flex flex-col items-center justify-center md:sticky md:top-24 md:mb-56 md:items-start md:justify-start">
             <SectionBadge>{t('faq.label')}</SectionBadge>
-            <h2 className="mt-5 text-center font-heading text-[28px] font-bold leading-tight text-foreground sm:text-5xl md:text-left md:text-4xl">
+            <h2 className="mt-5 text-center font-heading text-[28px] font-bold leading-tight text-foreground sm:text-3xl md:text-left md:text-4xl">
               {t('faq.title')}
             </h2>
             <p className="mt-4 text-center text-muted-foreground md:text-left">

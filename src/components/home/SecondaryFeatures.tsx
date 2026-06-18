@@ -16,7 +16,7 @@ export function SecondaryFeatures() {
           <SectionBadge>
             <FeatureIcon /> {t('secondary.label')}
           </SectionBadge>
-          <h2 className="mt-5 font-heading text-[28px] font-bold text-foreground sm:text-5xl md:text-4xl">
+          <h2 className="mt-5 font-heading text-[28px] font-bold text-foreground sm:text-3xl md:text-4xl">
             {t('secondary.titleLine1')}
             <br />
             <span className="brand-gradient-text">

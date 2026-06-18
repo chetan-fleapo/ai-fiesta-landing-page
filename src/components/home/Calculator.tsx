@@ -29,7 +29,7 @@ export function Calculator() {
   return (
     <section className="py-16">
       <div className="mx-auto max-w-[1280px] px-4 md:px-6">
-        <h2 className="text-center font-heading text-[28px] font-bold text-foreground sm:text-5xl md:text-4xl">
+        <h2 className="text-center font-heading text-[28px] font-bold text-foreground sm:text-3xl md:text-4xl">
           {t('calculator.title')}
         </h2>
 

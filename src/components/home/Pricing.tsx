@@ -33,7 +33,7 @@ export function Pricing() {
           <SectionBadge>
             <PricingIcon /> {t('pricing.label')}
           </SectionBadge>
-          <h2 className="mt-5 font-heading text-[28px] font-bold text-foreground sm:text-5xl md:text-4xl">
+          <h2 className="mt-5 font-heading text-[28px] font-bold text-foreground sm:text-3xl md:text-4xl">
             {t('pricing.titleLine1')}
             <br />
             <span className="brand-gradient-text">
