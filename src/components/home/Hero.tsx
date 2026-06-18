@@ -142,7 +142,7 @@ export function Hero() {
             </div>
           </div>
 
-          <h1 className="font-heading text-[40px] font-bold leading-[1.1] text-foreground xs:text-[56px] sm:text-[44px]">
+          <h1 className="font-heading text-[40px] font-bold leading-[1.1] text-foreground xs:text-[44px] sm:text-[56px]">
             {t('hero.titleLine1')}{' '}
             <span className="brand-gradient-text block">
               {t('hero.titleLine2')}
